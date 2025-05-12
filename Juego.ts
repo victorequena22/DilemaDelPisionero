@@ -11,6 +11,7 @@ import { InterrogadorInterface, JuezInterface, PrisioneroInterface } from "./Pro
 import { SaraRamos } from "./Prisioneros/SaraRamos";
 import { CaireMontilla } from "./Prisioneros/CaireMontilla";
 import { JesusFernandez } from "./Prisioneros/JesusFernandez";
+import { SantiagoSanchez } from "./Prisioneros/SantiagoSanchez";
 
 
 class Juego {
@@ -27,7 +28,8 @@ class Juego {
             new NelsonDoubuto(),
             new SaraRamos(),
             new CaireMontilla(),
-            new JesusFernandez()
+            new JesusFernandez(),
+            new SantiagoSanchez()
         ];
         this.#interrogadores = [
             new InterrogadorSimple(),
