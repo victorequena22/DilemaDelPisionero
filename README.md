@@ -10,19 +10,19 @@
 
 ### [31027740 Alaina Medina](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/GabrielaRodriguez.ts)
 Este prisionero no confieza mientras que su complice no lo traicione mas de dos vezes, si su complice lo traiciona mas de dos vezes el lo traicionara siempre.
-$\color{red}{\colorbox{white}{Se parece demasiado a vengador y a las estrategia de Luis Pérez como para pasarlo por valido}}$
+$\color{red}{Se parece demasiado a vengador y a las estrategia de Luis Pérez como para pasarlo por valido}$
 ### [32467803 Caire Montilla](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/CaireMontilla.ts)
 Este prisionero copia la última acción de su cómplice. 
 ### [31925657 Gabriela Rodríguez](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/GabrielaRodriguez.ts)
 coopera la primera vez. Luego, analiza las dos últimas jugadas del cómplice si ambas fueron traiciones, ella confiesa; si al menos una fue cooperación, ella coopera.. 
-$\color{red}{\colorbox{white}{Se parece demasiado a vengador y a las estrategia de Luis Pérez y Alaina Medina como para pasarlo por valido}}$
+$\color{red}{Se parece demasiado a vengador y a las estrategia de Luis Pérez y Alaina Medina como para pasarlo por valido}$
 ### [32623667 Gabriel Mora](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/GabrielMora.ts)
 Este prisionero traiciona solamente si su complice contiene en su nombre la letra "a", de lo contrario solo cooperará
 ### [33091874 Jesus Fernandez](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/JesusFernandez.ts)
 Este prsionero va tomando la deciciones de si confezar o no comparando la cantidad de veces que a sido traicionado y cunatas veces no a  traicionado.
 ### [31885162 Leanmar Gonzalez](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/LeanmarGonzalez.ts)
 Este jugador analiza el historial y responde con base en la mayoría. 
-$\color{red}{\colorbox{white}{Se parece demasiado al de Sara Ramos como para pasarlo por valido}}$
+$\color{red}{Se parece demasiado al de Sara Ramos como para pasarlo por valido}$
 ### [13267720 Luis Hernandez](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/LuisHernandez.ts)
 El presente prisionero es extremadamente supersticioso, solo va a cooperar si el numero de letras del nombre de su complice sigue la serie de Fibonacci, o si el numero de veces que su complice ha colaborado es mayor o igual que 1, sigue la serie de Fibonacci y a su vez es mayor al numero de veces que el confiesa.
 ### [31926235 Luis Perez](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/LuisPerez.ts)
