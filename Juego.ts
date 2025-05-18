@@ -2,16 +2,19 @@ import { InterrogadorCallado } from "./Interrogadores/InterrogadorCallado";
 import { InterrogadorSimple } from "./Interrogadores/InterrogadorSimple";
 import { JuezSimple } from "./Jueces/JuezSimple";
 import { NelsonDoubuto } from "./Prisioneros/NelsonDoubuto";
-import { Confiable } from "./Prisioneros/Confiable";
-import { Indeciso } from "./Prisioneros/Indeciso";
-import { Redentor } from "./Prisioneros/Redentor";
-import { Traidor } from "./Prisioneros/Traidor";
-import { Vengador } from "./Prisioneros/Vengador";
+import { Confiable } from "./Prisioneros/Profesor/Confiable";
+import { Indeciso } from "./Prisioneros/Profesor/Indeciso";
+import { Redentor } from "./Prisioneros/Profesor/Redentor";
+import { Traidor } from "./Prisioneros/Profesor/Traidor";
+import { Vengador } from "./Prisioneros/Profesor/Vengador";
 import { InterrogadorInterface, JuezInterface, PrisioneroInterface } from "./Prototipos/interface";
 import { SaraRamos } from "./Prisioneros/SaraRamos";
 import { CaireMontilla } from "./Prisioneros/CaireMontilla";
 import { JesusFernandez } from "./Prisioneros/JesusFernandez";
 import { SantiagoSanchez } from "./Prisioneros/SantiagoSanchez";
+import { GabrielMora } from "./Prisioneros/GabrielMora";
+import { LuisPerez } from "./Prisioneros/LuisPeres";
+import { LuisHernandez } from "./Prisioneros/LuisHernandez";
 
 
 class Juego {
@@ -25,11 +28,15 @@ class Juego {
             new Vengador(),
             new Redentor(),
             new Indeciso(),
-            new NelsonDoubuto(),
-            new SaraRamos(),
+            //Estudiantes
             new CaireMontilla(),
+            new GabrielMora(),
             new JesusFernandez(),
-            new SantiagoSanchez()
+            new LuisPerez(),
+            new LuisHernandez(),
+            new NelsonDoubuto(),
+            new SantiagoSanchez(),
+            new SaraRamos(),
         ];
         this.#interrogadores = [
             new InterrogadorSimple(),

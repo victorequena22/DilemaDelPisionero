@@ -1,6 +1,27 @@
+
+## Reglas
+#### 1. Se pueden repetir los prisionero
+#### 2. No se pueden porcentajes directos mas si calculados en vase a algun parametro
+#### 3. Se puede solicitar al complise o interrogador su respuesta y validar el en consecuencia.
+#### 4. Se puede revisar el historal propio, del complice y/o interrogador para tomar la decicion.
+
+
 # Prisioneros Entregados
+
+### [31027740 Alaina Medina](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/GabrielaRodriguez.ts)
+Este prisionero no confieza mientras que su complice no lo traicione mas de dos vezes, si su complice lo traiciona mas de dos vezes el lo traicionara siempre.
+```diff
+- Se parece demasiado a vengador y a las estrategia de Luis Pérez como para pasarlo por valido
+```
 ### [32467803 Caire Montilla](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/CaireMontilla.ts)
 Este prisionero copia la última acción de su cómplice. 
+### [31925657 Gabriela Rodríguez](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/GabrielaRodriguez.ts)
+coopera la primera vez. Luego, analiza las dos últimas jugadas del cómplice si ambas fueron traiciones, ella confiesa; si al menos una fue cooperación, ella coopera.. 
+```diff
+- Se parece demasiado a vengador y a las estrategia de Luis Pérez y Alaina Medina como para pasarlo por valido
+```
+### [32623667 Gabriel Mora](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/GabrielMora.ts)
+Este prisionero traiciona solamente si su complice contiene en su nombre la letra "a", de lo contrario solo cooperará
 ### [33091874 Jesus Fernandez](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/JesusFernandez.ts)
 Este prsionero va tomando la deciciones de si confezar o no comparando la cantidad de veces que a sido traicionado y cunatas veces no a  traicionado.
 ### [13267720 Luis Hernandez](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/LuisHernandez.ts)

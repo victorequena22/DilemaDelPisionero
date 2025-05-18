@@ -1,4 +1,4 @@
-import { Prisionero } from "../Prototipos/Prisionero";
+import { Prisionero } from "../../Prototipos/Prisionero";
 //Este es de confianza hasta que lo traisonas
 export class Vengador extends Prisionero {
     constructor() {
