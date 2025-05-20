@@ -13,7 +13,7 @@ export class Prisionero extends Persona implements PrisioneroInterface {
     setComplice(complice: PrisioneroInterface) { this.#complice = complice; }
     setInterrogador(interrogador: InterrogadorInterface) { this.#interrogador = interrogador; }
     //metodos 
-    confesar() { return false; }
+    confesar(_i: InterrogadorInterface | PrisioneroInterface) { return false; }
     juicio(condena: number) {
         if (this.#interrogador.getPrisionero1().getNombre() !== this.getNombre()) {
             this.getHistorial(this.#complice.getNombre()).push(this.#interrogador.getRespuesta1());

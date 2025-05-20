@@ -6,7 +6,7 @@ export class LuisennyAlvarez extends Prisionero {
    que divida el historial en dos porciones de igual longitud, si es par, y la desicion k 
    y k+1 son iguales, toma esa decision, de ser diferentes, la somete al azar, de igual manera procede
    de esta forma si el complice no posee historial alguno*/
-   //CI: 29624120
+  //CI: 29624120
   constructor() {
     super()
     this.setNombre("Luisenny Alvarez");
@@ -14,6 +14,10 @@ export class LuisennyAlvarez extends Prisionero {
   confesar(): boolean {
     var decision_con: boolean = false;
     var hist_com: boolean[];
+    /************************************************************/
+    /** Math.trunc no es el correcto para usar en este caso     */
+    /* el correcto es Math.floor ya que este si puede devolver 0*/
+    /************************************************************/
     hist_com = this.getComplice().getHistorial(this.getComplice().getNombre());
     decision_con = this.medianaEstadistica(hist_com);
     return decision_con;
