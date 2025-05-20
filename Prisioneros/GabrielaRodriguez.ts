@@ -1,12 +1,16 @@
 import { Prisionero } from "../Prototipos/Prisionero";
 
-//coopera la primera vez. Luego, analiza las dos últimas jugadas del cómplice
-//si ambas fueron traiciones, ella confiesa; si al menos una fue cooperación, ella coopera.
+//Esta estrategia analiza las últimas tres acciones del cómplice y clasifica su alma estratégica en cuatro tipos:
+//bondad (coopera seguido), egoísmo (traiciona seguido), caos (mezcla impredecible) o miedo (indefinido)
+//Según esa clasificación, adapta su respuesta para maximizar su beneficio, rompiendo patrones predecibles.
 // V31925657
 
 export class GabrielaRodriguez extends Prisionero {
-    private traicion_perdonada: Record<string, boolean> = {};
-    private rompió_confianza: Record<string, boolean> = {};
+    
+    #conocimiento: Record<string, {
+        alma: 'bondad' | 'egoismo' | 'caos' | 'miedo',
+        memoria: string
+    }> = {};
 
     constructor() {
         super();
@@ -15,26 +19,47 @@ export class GabrielaRodriguez extends Prisionero {
 
     confesar(): boolean {
         const complice = this.getComplice();
-        if (!complice) return true;
+        if (!complice) return false;
 
         const nombre = complice.getNombre();
         const historial = this.getHistorial(nombre);
 
-        if (this.rompió_confianza[nombre]) {
-            return true;
+        if (!this.#conocimiento[nombre]) {
+            this.#conocimiento[nombre] = { alma: 'miedo', memoria: '' };
         }
 
-        for (const traicion of historial) {
-            if (traicion) {
-                if (this.traicion_perdonada[nombre]) {
-                    this.rompió_confianza[nombre] = true;
-                    return true;
-                } else {
-                    this.traicion_perdonada[nombre] = true;
-                }
-            }
+        const saber = this.#conocimiento[nombre];
+
+        if (historial.length) {
+            const ultimo = historial[historial.length - 1] ? 'T' : 'C';
+            saber.memoria = (saber.memoria + ultimo).slice(-3);
         }
 
-        return false;
+        if (saber.memoria.length === 3) {
+            if (saber.memoria === 'CCC') saber.alma = 'bondad';
+            else if (saber.memoria === 'TTT') saber.alma = 'egoismo';
+            else if (saber.memoria.includes('C') && saber.memoria.includes('T')) saber.alma = 'caos';
+        }
+
+        switch (saber.alma) {
+            case 'bondad':
+                // Traiciona si la última acción fue cooperación
+                return saber.memoria.endsWith('C');
+
+            case 'egoismo':
+                // Siempre traiciona
+                return true;
+
+            case 'caos':
+                // Traiciona si la memoria no es toda igual
+                return new Set(saber.memoria).size > 1;
+
+            case 'miedo':
+                // Coopera al inicio y traiciona solo tras recibir traición
+                return saber.memoria.includes('T');
+
+            default:
+                return false;
+        }
     }
 }

@@ -9,20 +9,29 @@
 # Prisioneros Entregados
 
 ### [31027740 Alaina Medina](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/GabrielaRodriguez.ts)
-Este prisionero no confieza mientras que su complice no lo traicione mas de dos vezes, si su complice lo traiciona mas de dos vezes el lo traicionara siempre.
-##### $\color{red}{\textrm{Se parece demasiado a vengador y a las estrategia de Luis Pérez como para pasarlo por valido}}$
+Este prisionero funciona de la siguiente manera:
+Si lo traicionan dos veces seguidas, activa un modo de traición automática.
+Si su cómplice ha traicionado al menos 2 veces en total y el prisionero 
+No ha traicionado más de 3 veces, también traiciona.
+Si ya traiciono 3 veces, vuelve a cooperar.
+Si cooperan, se "resetea" y da otra oportunidad.
 ### [32467803 Caire Montilla](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/CaireMontilla.ts)
 Este prisionero copia la última acción de su cómplice. 
 ### [31925657 Gabriela Rodríguez](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/GabrielaRodriguez.ts)
-coopera la primera vez. Luego, analiza las dos últimas jugadas del cómplice si ambas fueron traiciones, ella confiesa; si al menos una fue cooperación, ella coopera.. 
+Esta estrategia analiza las últimas tres acciones del cómplice y clasifica su alma estratégica en cuatro tipos:bondad (coopera seguido), egoísmo (traiciona seguido), caos (mezcla impredecible) o miedo (indefinido), Según esa clasificación, adapta su respuesta para maximizar su beneficio, rompiendo patrones predecibles.
 ##### $\color{red}{\textrm{Se parece demasiado a vengador y a las estrategia de Luis Pérez y Alaina Medina como para pasarlo por valido}}$
 ### [32623667 Gabriel Mora](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/GabrielMora.ts)
 Este prisionero traiciona solamente si su complice contiene en su nombre la letra "a", de lo contrario solo cooperará
 ### [33091874 Jesus Fernandez](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/JesusFernandez.ts)
 Este prsionero va tomando la deciciones de si confezar o no comparando la cantidad de veces que a sido traicionado y cunatas veces no a  traicionado.
+### [31836101 Jesus Piña](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/JesusPiña.ts)
+Prisionero estratega adaptativo: Jesus Piña observa el historial completo de su cómplice. Coopera la primera vez. Si el cómplice lo traicionó en la ronda anterior, él traiciona la siguiente vez. Si el cómplice ha cooperado más veces que traicionado, coopera. Si ha traicionado más veces, traiciona.  Si hay empate, copia la última jugada del cómplice. Busca minimizar su condena adaptándose al rival..
+### [31371373 Kisbel Montes](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/LeanmarGonzalez.ts)
+Prisionero oportunista de rachas: Coopera la primera vez.
+Si el cómplice ha cooperado 3 veces seguidas, traiciona para aprovechar la confianza. Si el cómplice ha traicionado 2 veces seguidas, coopera para romper la racha. En cualquier otro caso, copia la última jugada del cómplice.
 ### [31885162 Leanmar Gonzalez](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/LeanmarGonzalez.ts)
-Este jugador analiza el historial y responde con base en la mayoría. 
-##### $\color{red}{\textrm{Se parece demasiado al de Sara Ramos como para pasarlo por valido}}$
+Este prisionero comienza cooperando, pero si es traicionado 3 veces seguidas, se vuelve vengativo para siempre 
+##### $\color{red}{\textrm{Se parece demasiado al de Alaina Medina como para pasarlo por valido}}$
 ### [13267720 Luis Hernandez](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/LuisHernandez.ts)
 El presente prisionero es extremadamente supersticioso, solo va a cooperar si el numero de letras del nombre de su complice sigue la serie de Fibonacci, o si el numero de veces que su complice ha colaborado es mayor o igual que 1, sigue la serie de Fibonacci y a su vez es mayor al numero de veces que el confiesa.
 ### [31926235 Luis Perez](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/LuisPerez.ts)
