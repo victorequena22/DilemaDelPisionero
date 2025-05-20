@@ -24,7 +24,6 @@ Esta estrategia analiza las últimas tres acciones del cómplice y clasifica su 
 - caos (mezcla impredecible) 
 -  miedo (indefinido)
 Según esa clasificación, adapta su respuesta para maximizar su beneficio, rompiendo patrones predecibles.
-##### $\color{red}{\textrm{Se parece demasiado a vengador y a las estrategia de Luis Pérez y Alaina Medina como para pasarlo por valido}}$
 ### [32623667 Gabriel Mora](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/GabrielMora.ts)
 Este prisionero traiciona solamente si su complice contiene en su nombre la letra "a", de lo contrario solo cooperará
 ### [33091874 Jesus Fernandez](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/JesusFernandez.ts)
