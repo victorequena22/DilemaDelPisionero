@@ -17,6 +17,8 @@
 - Si cooperan, se "resetea" y da otra oportunidad.
 ### [32467803 Caire Montilla](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/CaireMontilla.ts)
 Este prisionero copia la última acción de su cómplice. 
+### [31800428 Fernando Hernandez](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/FernandoHernandez.ts)
+Este presionero le pregunta a su complice que va a responer, luego de eso revisara el historial del complice, en el caso que el historial del complice y su respuesta sean la misma este prisionero se decidira quedar callado en el caso de que sean distintas traicionara igualmente si le falta alguno de los dos datos sea la respuesta del complice o su historial. 
 ### [31925657 Gabriela Rodríguez](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/GabrielaRodriguez.ts)
 Esta estrategia analiza las últimas tres acciones del cómplice y clasifica su alma estratégica en cuatro tipos:
 - bondad (coopera seguido),
@@ -26,6 +28,12 @@ Esta estrategia analiza las últimas tres acciones del cómplice y clasifica su 
 Según esa clasificación, adapta su respuesta para maximizar su beneficio, rompiendo patrones predecibles.
 ### [32623667 Gabriel Mora](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/GabrielMora.ts)
 Este prisionero traiciona solamente si su complice contiene en su nombre la letra "a", de lo contrario solo cooperará
+### [31759361 Helly Ramirez](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/HellyRamirez.ts)
+ - Coopera la primera vez.
+ - Si el cómplice alterna entre traicionar y cooperar en las últimas 4 rondas (es decir, nunca repite la misma acción dos veces seguidas), HellyRamirez traiciona para castigar la indecisión.
+ - Si el cómplice coopera 2 veces seguidas después de una traición,HellyRamirez coopera para premiar el cambio positivo.
+ - Si el cómplice traiciona 3 veces seguidas, HellyRamirez traiciona 2 veces seguidas y luego vuelve a observar.
+ - Por defecto, HellyRamirez coopera, buscando fomentar la cooperación pero castigando la indecisión y la traición excesiva.
 ### [33091874 Jesus Fernandez](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/JesusFernandez.ts)
 Este prsionero va tomando la deciciones de si confezar o no comparando la cantidad de veces que a sido traicionado y cunatas veces no a  traicionado.
 ### [31836101 Jesus Piña](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/JesusPiña.ts)
