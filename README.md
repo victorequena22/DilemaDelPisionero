@@ -33,6 +33,15 @@ Prisionero estratega adaptativo: observa el historial completo de su cómplice. 
 - Si el cómplice lo traicionó en la ronda anterior, él traiciona la siguiente vez. 
 - Si el cómplice ha cooperado más veces que traicionado, coopera. Si ha traicionado más veces, traiciona.
 - Si hay empate, copia la última jugada del cómplice. Busca minimizar su condena adaptándose al rival..
+### [31131987 John Valles](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/JohnValles.ts)
+ Estrategia única de John Valles:
+ - Coopera siempre en la primera ronda.
+ - Alterna entre cooperar y traicionar en la segunda y tercera ronda.
+ - A partir de la cuarta ronda:
+ - Coopera si el cómplice ha cooperado más veces.
+ - Traiciona si el cómplice ha traicionado más veces.
+ - Si hay empate, analiza el historial propio para decidir.
+ - Si el historial propio también está empatado, decide de forma aleatoria.
 ### [31371373 Kisbel Montes](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/LeanmarGonzalez.ts)
 - Coopera la primera vez.
 - Si el cómplice ha traicionado 2 veces seguidas en cualquier momento, entra en "modo castigo" y alterna entre traicionar y cooperar.
@@ -44,6 +53,8 @@ Prisionero estratega adaptativo: observa el historial completo de su cómplice. 
 ### [31885162 Leanmar Gonzalez](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/LeanmarGonzalez.ts)
 Este prisionero comienza cooperando, pero si es traicionado 3 veces seguidas, se vuelve vengativo para siempre 
 ##### $\color{red}{\textrm{Se parece demasiado al de Alaina Medina como para pasarlo por valido}}$
+### [29624120 Luisenny Alvarez](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/LuisennyAlvarez.ts)
+Esta prisionera esta obsecionada con la mediana estadistica del historial de su complice, si el numero de decisiones del complice es longitud impar 2k+1, ella va a tomar la decision correspondiente a la posicion k+1 del compañero que divida el historial en dos porciones de igual longitud, si es par, y la desicion k y k+1 son iguales, toma esa decision, de ser diferentes, la somete al azar, de igual manera procede de esta forma si el complice no posee historial alguno.
 ### [13267720 Luis Hernandez](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/LuisHernandez.ts)
 El presente prisionero es extremadamente supersticioso, solo va a cooperar si el numero de letras del nombre de su complice sigue la serie de Fibonacci, o si el numero de veces que su complice ha colaborado es mayor o igual que 1, sigue la serie de Fibonacci y a su vez es mayor al numero de veces que el confiesa.
 ### [31926235 Luis Perez](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/LuisPerez.ts)

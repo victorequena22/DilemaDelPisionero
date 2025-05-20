@@ -8,25 +8,28 @@ import { Prisionero } from "../Prototipos/Prisionero";
 // Si cooperan, se "resetea" y da otra oportunidad.
 // Alaina Medina 31027740
 export class AlainaMedina extends Prisionero {
-    #VecesTraicionadoConsecutivas = 0;
-    #VecesQueTraicione: number = 0;
-    #Confesion = false;
-    #Perdones = 0;
-    #ConfesionesSeguidas = 0
-
+    #historialPorPrisionero: { [nombre: string]: { VecesTraicionado: number; VecesQueTraicione: number; ConfesionesSeguidas: number; Perdones: number } } = {};
 
     constructor() {
         super();
         this.setNombre('Alaina Medina')
     }
 
-    registrarCooperacion() {
-        this.#VecesTraicionadoConsecutivas = 0;
-        this.#Confesion = false;
-        this.#VecesQueTraicione = 0;
-        this.#Perdones ++;
-        this.#ConfesionesSeguidas = 0;
+    ObtenerDatosDelPrisionero(nombre: string) {
+        if (!this.#historialPorPrisionero[nombre]) {
+            this.#historialPorPrisionero[nombre] = { VecesTraicionado: 0, VecesQueTraicione: 0, ConfesionesSeguidas: 0, Perdones: 0 };
+        }
+        return this.#historialPorPrisionero[nombre];
     }
+
+
+    registrarCooperacion(nombreComplice: string) {
+        const datos = this.ObtenerDatosDelPrisionero(nombreComplice);
+        datos.VecesTraicionado = 0; // Reiniciamos solo si coopera
+        datos.ConfesionesSeguidas = 0;
+        datos.Perdones++;
+    }
+
     confesar(): boolean {
 
         const nombreComplice = this.getComplice().getNombre();
@@ -35,38 +38,23 @@ export class AlainaMedina extends Prisionero {
         const vecesQueCoopero = historial.filter(respuesta => respuesta === false);
         const ultimasCooperaciones = vecesQueCoopero.slice(-2);
 
-        // si la han traicionado igual o mas de dos veces y si ella ha traicionado menos de tres veces.
-        if (vecesTraicionado >= 2 && this.#VecesQueTraicione < 3) {/** condicion lio */
-            this.#VecesQueTraicione++;
-            this.#ConfesionesSeguidas++;
+        const datos = this.ObtenerDatosDelPrisionero(nombreComplice);
+        datos.VecesTraicionado = vecesTraicionado;
 
-            // si ha traicionado menos de tres veces seguidas.
-            if (this.#ConfesionesSeguidas < 3) {
+        //si la han traicionado igual o mas de dos veces por cada prisionero 
+        // y si ella ha traicionado menos de tres veces 
+        // o un número ajustado de veces basado en el total de interacciones.
+        if (vecesTraicionado >= 2 && datos.VecesQueTraicione < Math.max(3, Math.floor(historial.length / 10))) {
+            datos.VecesQueTraicione++;
+            datos.ConfesionesSeguidas++;
 
-                // Traiciona, si el complice confieza.
-                if (ultimasCooperaciones.length === 0) {
-                    return true
-
-                }
-
-                // Coopera, si el complice coopera.
-                if (ultimasCooperaciones.length !== 0) {
-                    this.registrarCooperacion()
-                    return false
-
-                }
+            if (datos.ConfesionesSeguidas < 3 && ultimasCooperaciones.length === 0) {
+                return true; // Traiciona si el cómplice ha confesado recientemente
             }
         }
-        //Si no se cumplen las condiciones para confesar o traicionar,
-        //  la función devuelve false, es decir, no confiesa.
-        this.#ConfesionesSeguidas = 0
-        
-        /***************************************************************/
-        /** Si reinicias el contador todo el tiempo nunca entrara el   */
-        /* la condicion lio tiene que llevar las cuentas sin reiniciar */
-        /* todo el tiempo ahora es el problema contrario               */
-        /***************************************************************/
-        this.registrarCooperacion()
-        return false
+
+        // Si el cómplice ha cooperado, reinicia el contador y coopera
+        this.registrarCooperacion(nombreComplice);
+        return false;
     }
 }
