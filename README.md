@@ -9,26 +9,39 @@
 # Prisioneros Entregados
 
 ### [31027740 Alaina Medina](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/GabrielaRodriguez.ts)
-Este prisionero funciona de la siguiente manera:
-Si lo traicionan dos veces seguidas, activa un modo de traición automática.
-Si su cómplice ha traicionado al menos 2 veces en total y el prisionero 
-No ha traicionado más de 3 veces, también traiciona.
-Si ya traiciono 3 veces, vuelve a cooperar.
-Si cooperan, se "resetea" y da otra oportunidad.
+- Este prisionero funciona de la siguiente manera:
+- Si lo traicionan dos veces seguidas, activa un modo de traición automática.
+- Si su cómplice ha traicionado al menos 2 veces en total y el prisionero 
+- No ha traicionado más de 3 veces, también traiciona.
+- Si ya traiciono 3 veces, vuelve a cooperar.
+- Si cooperan, se "resetea" y da otra oportunidad.
 ### [32467803 Caire Montilla](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/CaireMontilla.ts)
 Este prisionero copia la última acción de su cómplice. 
 ### [31925657 Gabriela Rodríguez](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/GabrielaRodriguez.ts)
-Esta estrategia analiza las últimas tres acciones del cómplice y clasifica su alma estratégica en cuatro tipos:bondad (coopera seguido), egoísmo (traiciona seguido), caos (mezcla impredecible) o miedo (indefinido), Según esa clasificación, adapta su respuesta para maximizar su beneficio, rompiendo patrones predecibles.
+Esta estrategia analiza las últimas tres acciones del cómplice y clasifica su alma estratégica en cuatro tipos:
+- bondad (coopera seguido),
+- egoísmo (traiciona seguido) 
+- caos (mezcla impredecible) 
+-  miedo (indefinido)
+Según esa clasificación, adapta su respuesta para maximizar su beneficio, rompiendo patrones predecibles.
 ##### $\color{red}{\textrm{Se parece demasiado a vengador y a las estrategia de Luis Pérez y Alaina Medina como para pasarlo por valido}}$
 ### [32623667 Gabriel Mora](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/GabrielMora.ts)
 Este prisionero traiciona solamente si su complice contiene en su nombre la letra "a", de lo contrario solo cooperará
 ### [33091874 Jesus Fernandez](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/JesusFernandez.ts)
 Este prsionero va tomando la deciciones de si confezar o no comparando la cantidad de veces que a sido traicionado y cunatas veces no a  traicionado.
 ### [31836101 Jesus Piña](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/JesusPiña.ts)
-Prisionero estratega adaptativo: Jesus Piña observa el historial completo de su cómplice. Coopera la primera vez. Si el cómplice lo traicionó en la ronda anterior, él traiciona la siguiente vez. Si el cómplice ha cooperado más veces que traicionado, coopera. Si ha traicionado más veces, traiciona.  Si hay empate, copia la última jugada del cómplice. Busca minimizar su condena adaptándose al rival..
+Prisionero estratega adaptativo: observa el historial completo de su cómplice. Coopera la primera vez.
+- Si el cómplice lo traicionó en la ronda anterior, él traiciona la siguiente vez. 
+- Si el cómplice ha cooperado más veces que traicionado, coopera. Si ha traicionado más veces, traiciona.
+- Si hay empate, copia la última jugada del cómplice. Busca minimizar su condena adaptándose al rival..
 ### [31371373 Kisbel Montes](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/LeanmarGonzalez.ts)
-Prisionero oportunista de rachas: Coopera la primera vez.
-Si el cómplice ha cooperado 3 veces seguidas, traiciona para aprovechar la confianza. Si el cómplice ha traicionado 2 veces seguidas, coopera para romper la racha. En cualquier otro caso, copia la última jugada del cómplice.
+- Coopera la primera vez.
+- Si el cómplice ha traicionado 2 veces seguidas en cualquier momento, entra en "modo castigo" y alterna entre traicionar y cooperar.
+- Si el cómplice coopera 3 veces seguidas después de estar en modo castigo, lo perdona y vuelve a cooperar normalmente.
+- Por defecto, alterna entre cooperar y traicionar en cada ronda.
+- Condición de traición: 2 traiciones seguidas del cómplice en cualquier momento. 
+- Condición de perdón: 3 cooperaciones seguidas del cómplice después de estar en modo castigo.  
+- Acción por defecto: alternar entre cooperar y traicionar.
 ### [31885162 Leanmar Gonzalez](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/LeanmarGonzalez.ts)
 Este prisionero comienza cooperando, pero si es traicionado 3 veces seguidas, se vuelve vengativo para siempre 
 ##### $\color{red}{\textrm{Se parece demasiado al de Alaina Medina como para pasarlo por valido}}$
@@ -40,6 +53,8 @@ Cooperar inicialmente, solo recordar las 2 últimas interacciones, si en alguna 
 Este prisionero sigue una estrategia cíclica en ronda par coopera (no confiesa) y en ronda impar confiesa.
 ### [31926589 Santiago Sanchez](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/SantiagoSanchez.ts)
 Sigue un ciclo fijo de 3 rondas que determina si coopera o confiesa. La decisión se basa solo en la historia de interacciones con su cómplice, pero sigue una estrategia no reactiva, más bien planeada.
-Primera ronda (coopera), Segunda Ronda (Coopera si el complice tambien coopero la ronda anterior y si el complice traicionó, el confiesa.) y Tercera ronda (siempre confiesa sin importar que hizo el complice)
+- Primera ronda (coopera)
+-  Segunda Ronda (Coopera si el complice tambien coopero la ronda anterior y si el complice traicionó, el confiesa.) 
+-  y Tercera ronda (siempre confiesa sin importar que hizo el complice)
 ### [32023260 Sara Ramos](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/SaraRamos.ts)
 Observa primero la interacciones para tomar una decision, evalua los comportamientos del complice para ver que estrategia usar, si hay muchas confesiones cambia la estrategia y si el complice no ha  confesado coopera.

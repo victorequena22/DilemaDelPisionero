@@ -12,6 +12,8 @@ export class AlainaMedina extends Prisionero {
     #VecesQueTraicione: number = 0;
     #Confesion = false;
     #Perdones = 0;
+    #ConfesionesSeguidas = 0
+
 
     constructor() {
         super();
@@ -23,41 +25,48 @@ export class AlainaMedina extends Prisionero {
         this.#Confesion = false;
         this.#VecesQueTraicione = 0;
         this.#Perdones ++;
+        this.#ConfesionesSeguidas = 0;
     }
     confesar(): boolean {
-
-        /***************************************************************/
-        /** Esto invalida la condicion  que sigue despues              */
-        /***************************************************************/
-        if (this.#VecesQueTraicione >= 3) {
-            /***************************************************************/
-            /** Esta duncion no se esta ejecutando                         */
-            /***************************************************************/
-            this.registrarCooperacion
-            return false
-        }
-
 
         const nombreComplice = this.getComplice().getNombre();
         const historial = this.getHistorial(nombreComplice) || [];
         const vecesTraicionado = historial.filter(respuesta => respuesta === true).length;
+        const vecesQueCoopero = historial.filter(respuesta => respuesta === false);
+        const ultimasCooperaciones = vecesQueCoopero.slice(-2);
 
-
-        /***************************************************************/
-        /** si le contador pasa VecesQueTraicione de 3 es quivalente a */
-        /* la condicion del principo                                   */
-        /***************************************************************/
-        if (vecesTraicionado >= 2 && this.#VecesQueTraicione < 3) {
+        // si la han traicionado igual o mas de dos veces y si ella ha traicionado menos de tres veces.
+        if (vecesTraicionado >= 2 && this.#VecesQueTraicione < 3) {/** condicion lio */
             this.#VecesQueTraicione++;
-            return true;
+            this.#ConfesionesSeguidas++;
+
+            // si ha traicionado menos de tres veces seguidas.
+            if (this.#ConfesionesSeguidas < 3) {
+
+                // Traiciona, si el complice confieza.
+                if (ultimasCooperaciones.length === 0) {
+                    return true
+
+                }
+
+                // Coopera, si el complice coopera.
+                if (ultimasCooperaciones.length !== 0) {
+                    this.registrarCooperacion()
+                    return false
+
+                }
+            }
         }
-
+        //Si no se cumplen las condiciones para confesar o traicionar,
+        //  la función devuelve false, es decir, no confiesa.
+        this.#ConfesionesSeguidas = 0
+        
+        /***************************************************************/
+        /** Si reinicias el contador todo el tiempo nunca entrara el   */
+        /* la condicion lio tiene que llevar las cuentas sin reiniciar */
+        /* todo el tiempo ahora es el problema contrario               */
+        /***************************************************************/
+        this.registrarCooperacion()
         return false
-
     }
 }
-
-/***************************************************************/
-/** sigue teniendo el mismo problema de traicionar un maximo   */
-/* 3 veces en todo el juego                                    */
-/***************************************************************/
