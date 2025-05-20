@@ -69,6 +69,15 @@ El presente prisionero es extremadamente supersticioso, solo va a cooperar si el
 Cooperar inicialmente, solo recordar las 2 últimas interacciones, si en alguna de esas 2 últimas veces fue traicionado, confesar y si en ambas últimas veces el cómplice cooperó, seguir cooperando y listo
 ### [32163215 Nelson Doubuto](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/NelsonDoubuto.ts)
 Este prisionero sigue una estrategia cíclica en ronda par coopera (no confiesa) y en ronda impar confiesa.
+### [31118236 Salomon Parra](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/NelsonDoubuto.ts)
+- Esta estrategia conocida como "Pavlov" o "Gana-Quédate, Pierde-Cambia". En esencia, simula cómo un prisionero decide si confesar (traicionar) o cooperar (llamar) con su cómplice en una serie de interacciones repetidas.
+- La lógica principal de este Prisionero se encuentra en el método confesar():
+- Primera Interacción: // Si es la primera vez que este Prisionero interactúa con un cómplice específico, siempre coopera (no confiesa). Es un inicio amistoso para ver cómo reacciona el otro. 
+- Interacciones Posteriores (Gana-Quédate, Pierde-Cambia):
+- Para las rondas siguientes, el Prisionero evalúa el resultado de la ronda anterior: 
+- Si el resultado de la ronda anterior fue "favorable" para él, entonces repite la misma decisión que tomó en esa ronda. Esto es el "Gana-Quédate". 
+- Si el resultado de la ronda anterior fue "desfavorable" para él, entonces cambia su decisión respecto a la ronda anterior. Si antes cooperó, ahora traiciona; Si antes traicionó, ahora coopera. Esto es el "Pierde-Cambia".
+
 ### [31926589 Santiago Sanchez](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/SantiagoSanchez.ts)
 Sigue un ciclo fijo de 3 rondas que determina si coopera o confiesa. La decisión se basa solo en la historia de interacciones con su cómplice, pero sigue una estrategia no reactiva, más bien planeada.
 - Primera ronda (coopera)
