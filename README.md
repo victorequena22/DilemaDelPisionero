@@ -19,6 +19,10 @@
 - es un prisionero estratégico, adaptable y cíclico, que toma decisiones basadas en:
 - Su número de ronda actual.
 - El historial de decisiones de su cómplice.
+### [31795086 Angel Marquez](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/AngelMarquez.ts)
+- Este prisionero alterna su estrategia basado en si fue traicionado en la última ronda
+- Si en la última interacción el cómplice cooperó, coopera esta ronda
+- Si en la última interacción el cómplice traicionó, alterna entre cooperar y traicionar
 ### [32467803 Caire Montilla](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/CaireMontilla.ts)
 Este prisionero copia la última acción de su cómplice. 
 ### [31800428 Fernando Hernandez](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/FernandoHernandez.ts)
