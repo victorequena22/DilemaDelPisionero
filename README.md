@@ -84,3 +84,10 @@ Sigue un ciclo fijo de 3 rondas que determina si coopera o confiesa. La decisió
 -  y Tercera ronda (siempre confiesa sin importar que hizo el complice)
 ### [32023260 Sara Ramos](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/SaraRamos.ts)
 Observa primero la interacciones para tomar una decision, evalua los comportamientos del complice para ver que estrategia usar, si hay muchas confesiones cambia la estrategia y si el complice no ha  confesado coopera.
+### [32314946 Sara Vasquez](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/SaraVasquez.ts)
+- Tit For Tat con Perdón Condicional
+- Esta prisionera sigue la estrategia "Tit For Tat" (ojo por ojo): coopera siempre hasta que el cómplice traicione.
+- Si el cómplice traiciona, entra en modo castigo y solo perdona si el cómplice coopera dos veces seguidas.
+- Esto permite romper ciclos de venganza y fomentar la cooperación a largo plazo, ya que el cómplice puede notar que, aunque traicione, puede ser perdonado si demuestra un cambio consistente en su comportamiento.
+- Si el cómplice coopera, ella siempre coopera.
+- Esta estrategia busca equilibrar la reciprocidad con la posibilidad de reconciliación, diferenciándose de un Tit For Tat puro y de cualquier otro prisionero del conjunto.

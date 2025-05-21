@@ -22,7 +22,7 @@ export class JesusPiña extends Prisionero {
         /*  colocar el === true                                     */
         /************************************************************/
         // Si el cómplice traicionó en la ronda anterior
-        if (historial[historial.length - 1] === true) {
+        if (historial[historial.length - 1]) {
             return true;
         }
         /************************************************************/
@@ -30,12 +30,12 @@ export class JesusPiña extends Prisionero {
         /*  colocar el === true                                     */
         /************************************************************/
         // Cuenta cooperaciones y traiciones
-        const traiciones = historial.filter(x => x === true).length;
+        const traiciones = historial.filter(x => x).length;
         /************************************************************/
         /** Igual que arriba booleano false puedes usar la negacion */
         /* (x => !x) para obtener el mismo resultado                */
         /************************************************************/
-        const cooperaciones = historial.filter(x => x === false).length;
+        const cooperaciones = historial.filter(x => !x).length;
         /************************************************************/
         /** la sentencia if tiene su condicion para falso que es    */
         /* else ya que el segundo es el falso del primero se usa if */
