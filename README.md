@@ -51,13 +51,12 @@ Prisionero estratega adaptativo: observa el historial completo de su cómplice. 
  - Si hay empate, analiza el historial propio para decidir.
  - Si el historial propio también está empatado, decide de forma aleatoria.
 ### [31371373 Kisbel Montes](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/LeanmarGonzalez.ts)
-- Coopera la primera vez.
-- Si el cómplice ha traicionado 2 veces seguidas en cualquier momento, entra en "modo castigo" y alterna entre traicionar y cooperar.
-- Si el cómplice coopera 3 veces seguidas después de estar en modo castigo, lo perdona y vuelve a cooperar normalmente.
-- Por defecto, alterna entre cooperar y traicionar en cada ronda.
-- Condición de traición: 2 traiciones seguidas del cómplice en cualquier momento. 
-- Condición de perdón: 3 cooperaciones seguidas del cómplice después de estar en modo castigo.  
-- Acción por defecto: alternar entre cooperar y traicionar.
+- Prisionero oportunista de rachas: Coopera la primera vez.
+- Si el cómplice ha cooperado 3 veces seguidas, traiciona para aprovechar la
+- confianza.
+- Si el cómplice ha traicionado 2 veces seguidas, coopera para
+- romper la racha.
+- En cualquier otro caso, copia la última jugada del cómplice.
 ### [31885162 Leanmar Gonzalez](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/LeanmarGonzalez.ts)
 Este prisionero comienza cooperando, pero si es traicionado 3 veces seguidas, se vuelve vengativo para siempre 
 ##### $\color{red}{\textrm{Se parece demasiado al de Alaina Medina como para pasarlo por valido}}$
