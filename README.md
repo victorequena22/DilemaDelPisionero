@@ -58,8 +58,7 @@ Prisionero estratega adaptativo: observa el historial completo de su cómplice. 
 - romper la racha.
 - En cualquier otro caso, copia la última jugada del cómplice.
 ### [31885162 Leanmar Gonzalez](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/LeanmarGonzalez.ts)
-Este prisionero comienza cooperando, pero si es traicionado 3 veces seguidas, se vuelve vengativo para siempre 
-##### $\color{red}{\textrm{Se parece demasiado al de Alaina Medina como para pasarlo por valido}}$
+Este prisionero comienza cooperando, pero si es traicionado 3 veces seguidas, se vuelve vengativo para siempre LeanmarGonzalez 
 ### [29624120 Luisenny Alvarez](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/LuisennyAlvarez.ts)
 Esta prisionera esta obsecionada con la mediana estadistica del historial de su complice, si el numero de decisiones del complice es longitud impar 2k+1, ella va a tomar la decision correspondiente a la posicion k+1 del compañero que divida el historial en dos porciones de igual longitud, si es par, y la desicion k y k+1 son iguales, toma esa decision, de ser diferentes, la somete al azar, de igual manera procede de esta forma si el complice no posee historial alguno.
 ### [13267720 Luis Hernandez](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/LuisHernandez.ts)
@@ -68,7 +67,12 @@ El presente prisionero es extremadamente supersticioso, solo va a cooperar si el
 Cooperar inicialmente, solo recordar las 2 últimas interacciones, si en alguna de esas 2 últimas veces fue traicionado, confesar y si en ambas últimas veces el cómplice cooperó, seguir cooperando y listo
 ### [32163215 Nelson Doubuto](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/NelsonDoubuto.ts)
 Este prisionero sigue una estrategia cíclica en ronda par coopera (no confiesa) y en ronda impar confiesa.
-### [31118236 Salomon Parra](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/NelsonDoubuto.ts)
+### [30560368 Ronny Perez](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/RonnyPerez.ts)
+  -   Estrategia: Coopera la primera vez.
+  -   Coopera dos veces si el cómplice coopera.
+  -   Traiciona dos veces si el cómplice traiciona.
+  -   Cada 5 jugadas, el ciclo se reinicia y vuelve a empezar.
+### [31118236 Salomon Parra](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/SalomonParra.ts)
 - Esta estrategia conocida como "Pavlov" o "Gana-Quédate, Pierde-Cambia". En esencia, simula cómo un prisionero decide si confesar (traicionar) o cooperar (llamar) con su cómplice en una serie de interacciones repetidas.
 - La lógica principal de este Prisionero se encuentra en el método confesar():
 - Primera Interacción: // Si es la primera vez que este Prisionero interactúa con un cómplice específico, siempre coopera (no confiesa). Es un inicio amistoso para ver cómo reacciona el otro. 

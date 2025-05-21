@@ -1,4 +1,4 @@
-import { Interrogador } from "../Prototipos/Interrogador";
+import { InterrogadorInterface, PrisioneroInterface } from "../Prototipos/interface";
 import { Prisionero } from "../Prototipos/Prisionero";
 
 // Estrategia única de John Valles:
@@ -17,7 +17,7 @@ export class JohnValles extends Prisionero {
         this.setNombre("John Valles");
     }
 
-    confesar(interrogador: Interrogador): boolean {
+    confesar(interrogador: PrisioneroInterface | InterrogadorInterface): boolean {
         // Obtener el historial del cómplice y del propio prisionero desde el interrogador
         const historialComplice = interrogador.getHistorial(this.getComplice().getNombre());
         const historialPropio = interrogador.getHistorial(this.getNombre());

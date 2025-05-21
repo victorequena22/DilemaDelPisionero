@@ -5,7 +5,7 @@ import { Prisionero } from "../Prototipos/Prisionero";
 export class LuisPerez extends Prisionero {
     constructor() {
         super();
-        this.setNombre('Maquito');
+        this.setNombre('Luis Perez');
     }
 
     confesar(): boolean {

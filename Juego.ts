@@ -15,6 +15,17 @@ import { SantiagoSanchez } from "./Prisioneros/SantiagoSanchez";
 import { GabrielMora } from "./Prisioneros/GabrielMora";
 import { LuisPerez } from "./Prisioneros/LuisPeres";
 import { LuisHernandez } from "./Prisioneros/LuisHernandez";
+import { AlainaMedina } from "./Prisioneros/AlainaMedina";
+import { GabrielaRodriguez } from "./Prisioneros/GabrielaRodriguez";
+import { HellyRamirez } from "./Prisioneros/HellyRamirez";
+import { JesusPiña } from "./Prisioneros/JesusPiña";
+import { JohnValles } from "./Prisioneros/JohnValles";
+import { FernandoHernandez } from "./Prisioneros/FernandoHernandez";
+import { KisbelMontes } from "./Prisioneros/KisbelMontes";
+import LeanmarGonzalez from "./Prisioneros/LeanmarGonzalez";
+import { LuisennyAlvarez } from "./Prisioneros/LuisennyAlvarez";
+import { SalomonParra } from "./Prisioneros/SalomonParra";
+import { SaraVasquez } from "./Prisioneros/SaraVasquez";
 
 
 class Juego {
@@ -23,24 +34,34 @@ class Juego {
     #jueces: JuezInterface[];
     constructor() {
         this.#casos = [
-            new Traidor(),
-            new Confiable(),
-            new Vengador(),
-            new Redentor(),
-            new Indeciso(),
+            // new Traidor(),
+            // new Confiable(),
+            // new Vengador(),
+            // new Redentor(),
+            // new Indeciso(),
             //Estudiantes
+            new AlainaMedina(),
             new CaireMontilla(),
+            new FernandoHernandez(),
+            new GabrielaRodriguez(),
             new GabrielMora(),
+            new HellyRamirez(),
             new JesusFernandez(),
+            new JesusPiña(),
+            new JohnValles(),
+            new KisbelMontes(),
+            new LeanmarGonzalez(),
+            new LuisennyAlvarez(),
             new LuisPerez(),
             new LuisHernandez(),
             new NelsonDoubuto(),
+            new SalomonParra(),
             new SantiagoSanchez(),
             new SaraRamos(),
+            new SaraVasquez()
         ];
         this.#interrogadores = [
-            new InterrogadorSimple(),
-            new InterrogadorCallado()
+            new InterrogadorSimple()
         ];
         this.#jueces = [
             new JuezSimple()
@@ -68,7 +89,7 @@ class Juego {
         juez.juicio();
     }
     juego() {
-        for (let i = 0; i < 1000; i++) {
+        for (let i = 0; i < 100; i++) {
             this.randonizar();
             this.ronda();
         }
