@@ -1,4 +1,5 @@
 import { Prisionero } from "../Prototipos/Prisionero";
+import { InterrogadorInterface, PrisioneroInterface } from "../Prototipos/interface";
 // Estrategia HellyRamirez:
 // - Coopera la primera vez.
 // - Si el cómplice alterna entre traicionar y cooperar en las últimas 4 rondas
@@ -18,7 +19,7 @@ export class HellyRamirez extends Prisionero {
         this.setNombre("Helly Ramirez");
     }
 
-    confesar(): boolean {
+    confesar(_i: InterrogadorInterface | PrisioneroInterface): boolean {
         const complice = this.getComplice();
         if (!complice) return false;
         const historial = this.getHistorial(complice.getNombre());
@@ -44,15 +45,13 @@ export class HellyRamirez extends Prisionero {
             }
         }
 
-        // Premia cambio positivo: 2 cooperaciones seguidas después de una traición
+        // Premia cambio positivo y castiga traición excesiva si hay al menos 3 rondas
         if (historial.length >= 3) {
+            // Premia cambio positivo: 2 cooperaciones seguidas después de una traición
             if (historial[historial.length - 3] && !historial[historial.length - 2] && !historial[historial.length - 1]) {
                 return false; // Premia el cambio positivo
             }
-        }
-
-        // Castiga traición excesiva: 3 traiciones seguidas
-        if (historial.length >= 3) {
+            // Castiga traición excesiva: 3 traiciones seguidas
             if (historial[historial.length - 1] && historial[historial.length - 2] && historial[historial.length - 3]) {
                 this.castigoActivo = 1; // Traiciona 2 veces seguidas
                 return true;

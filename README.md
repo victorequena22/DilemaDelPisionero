@@ -8,13 +8,17 @@
 
 # Prisioneros Entregados
 
-### [31027740 Alaina Medina](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/GabrielaRodriguez.ts)
+### [31027740 Alaina Medina](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/AlainaMedina.ts)
 - Este prisionero funciona de la siguiente manera:
 - Si lo traicionan dos veces seguidas, activa un modo de traición automática.
 - Si su cómplice ha traicionado al menos 2 veces en total y el prisionero 
 - No ha traicionado más de 3 veces, también traiciona.
 - Si ya traiciono 3 veces, vuelve a cooperar.
 - Si cooperan, se "resetea" y da otra oportunidad.
+### [31737593 Andres Alavarado](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/AndresAlavarado.ts)
+- es un prisionero estratégico, adaptable y cíclico, que toma decisiones basadas en:
+- Su número de ronda actual.
+- El historial de decisiones de su cómplice.
 ### [32467803 Caire Montilla](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/CaireMontilla.ts)
 Este prisionero copia la última acción de su cómplice. 
 ### [31800428 Fernando Hernandez](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/FernandoHernandez.ts)
@@ -34,6 +38,11 @@ Este prisionero traiciona solamente si su complice contiene en su nombre la letr
  - Si el cómplice coopera 2 veces seguidas después de una traición,HellyRamirez coopera para premiar el cambio positivo.
  - Si el cómplice traiciona 3 veces seguidas, HellyRamirez traiciona 2 veces seguidas y luego vuelve a observar.
  - Por defecto, HellyRamirez coopera, buscando fomentar la cooperación pero castigando la indecisión y la traición excesiva.
+### [29754399 Hugeisy Cordero](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/HugeisyCordero.ts)
+- Primera jugada: Decisión aleatoria 
+- Si el cómplice traiciona: Responde con traición 
+- Si el cómplice coopera: Mantiene su última decisión
+- Si el cómplice coopera dos veces seguidas: Perdona la traición
 ### [33091874 Jesus Fernandez](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/JesusFernandez.ts)
 Este prsionero va tomando la deciciones de si confezar o no comparando la cantidad de veces que a sido traicionado y cunatas veces no a  traicionado.
 ### [31836101 Jesus Piña](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/JesusPiña.ts)
