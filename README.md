@@ -68,12 +68,12 @@ Este prisionero traiciona solamente si su complice contiene en su nombre la letr
 
 ### [31987430 Hercules ??????](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/HugeisyCordero.ts)
 Hercules coopera inicialmente. Una vez suficiente informacion es recolectada, se coloca en un estado de discernimiento ante sus contrincantes, de los cuales obtendra informacion sobre sus otros contrincantes, comparandola a la manera en que se han comportado cuando estan con el. Finalmente, en base a estos datos el otorgara una respuesta a la confesion actual acorde a como el complice ha actuado con otros. Los casos son:
-+Si otros dicen que el complice los ha traicionado mas veces que cooperado, se verifica si ellos mismos le han cooperado a Hercules mas veces que traicionado:
-    -Si han cooperado mas veces que traicionado con Hercules, se considera traicionar al complice
-    -Si han traicionado mas veces que cooperado con Hercules, se considera cooperar con el complice
-+Si otros dicen que el complice les ha cooperado mas veces que traicionado, se verifica si ellos mismos le han traicionado a Hercules mas veces que cooperado:
-    -Si han cooperado mas veces que traicionado con Hercules, se considera en cooperar con el complice
-    -Si han traicionado mas veces que cooperado con Hercules, se considera traicionar al complice
+- Si otros dicen que el complice los ha traicionado mas veces que cooperado, se verifica si ellos mismos le han cooperado a Hercules mas veces que traicionado:
+    - Si han cooperado mas veces que traicionado con Hercules, se considera traicionar al complice
+    - Si han traicionado mas veces que cooperado con Hercules, se considera cooperar con el complice
++ Si otros dicen que el complice les ha cooperado mas veces que traicionado, se verifica si ellos mismos le han traicionado a Hercules mas veces que cooperado:
+    - Si han cooperado mas veces que traicionado con Hercules, se considera en cooperar con el complice
+    - Si han traicionado mas veces que cooperado con Hercules, se considera traicionar al complice
 
 Finalmente, se suman estos datos de cada contrincante anterior para tomar una decision unanime.
 
