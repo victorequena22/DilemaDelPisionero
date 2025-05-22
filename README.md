@@ -194,4 +194,4 @@ este prisionero analiza la ultima respuesta de su complice y la de el mismo si s
 $\color{red}{\textrm{Copia de Caire Montilla}}$
 
 ### [31535826 Jaiker Perez](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/Rechazados/JaikerPerez.ts)
-$\color{red}{\textrm{Todos los participantes tienen mas de 5 caracteres lo que lo haceun copia de traidor}}$
+$\color{red}{\textrm{Todos los participantes tienen mas de 5 caracteres lo que lo hace una copia de traidor}}$
