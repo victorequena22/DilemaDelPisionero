@@ -36,7 +36,7 @@ Este prisionero clasifica a su cómplice en 5 tipos según su historial de accio
   - Si es adaptativo (sin patrón definido): Traiciona solo si el cómplice ha traicionado más del 60% de las veces.
 
 $\color{red}{\textrm{No se permiten \% directos en el codigo}}$
-$\color{red}{\textrm{Los atributos para ser privados deben comenzar con #}}$
+$\color{red}{\textrm{Los atributos para ser privados deben comenzar con \#}}$
 
 ### [31800428 Fernando Hernandez](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/FernandoHernandez.ts)
 Este presionero le pregunta a su complice que va a responer, luego de eso revisara el historial del complice, en el caso que el historial del complice y su respuesta sean la misma este prisionero se decidira quedar callado en el caso de que sean distintas traicionara igualmente si le falta alguno de los dos datos sea la respuesta del complice o su historial. 
@@ -45,7 +45,7 @@ Este presionero le pregunta a su complice que va a responer, luego de eso revisa
 ### [32527670 Frankie Sanchez](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/FrankieSanchez.ts)
 Este prisionero coopera la primera ronda, si el complice lo traciona el coopera por 2 rondas y si el complice coopera e traiciona por 2 rondas 
 
-$\color{red}{\textrm{Los atributos para ser privados deben comenzar con #}}$
+$\color{red}{\textrm{Los atributos para ser privados deben comenzar con \#}}$
 
 ### [31925657 Gabriela Rodríguez](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/GabrielaRodriguez.ts)
 Esta estrategia analiza las últimas tres acciones del cómplice y clasifica su alma estratégica en cuatro tipos:
@@ -152,7 +152,7 @@ Ronny Silva "Paranoico Selectivo" Programacion I Seccion 01 CI: 31147462. Este p
     - En otro caso, decide aleatoriamente pero con 70% de probabilidad de cooperar.
 
 $\color{red}{\textrm{No se permiten \% directos en el codigo}}$
-$\color{red}{\textrm{Los atributos para ser privados deben comenzar con #}}$
+$\color{red}{\textrm{Los atributos para ser privados deben comenzar con \#}}$
 $\color{red}{\textrm{Debido a que la paranoia total se hace de manera general cumplida la condicion pasa a se un traido por defecto.}}$
 
 
