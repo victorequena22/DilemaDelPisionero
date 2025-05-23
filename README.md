@@ -23,6 +23,9 @@ Este prisionero alterna su estrategia basado en si fue traicionado en la última
   - Si en la última interacción el cómplice cooperó, coopera esta ronda
   - Si en la última interacción el cómplice traicionó, alterna entre cooperar y traicionar
 
+### [31596746 Angel Rodriguez](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/Rechazados/AngelRodriguez.ts)
+De acuerdo al planteamiento del dilema original de Prisionero. Este prisionero actuara en función a evitar el beneficio común con respecto a su complice, por lo tanto evaluará cúal fué la ultima relación que tuvo con él en su historial y en las proximas rondas se comportará de manera contraria a él para así evitar un comportamiento coincidente.
+
 ### [32467803 Caire Montilla](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/CaireMontilla.ts)
 Este prisionero copia la última acción de su cómplice. 
 
@@ -188,10 +191,6 @@ Tit For Tat con Perdón Condicional
 este prisionero analiza la ultima respuesta de su complice y la de el mismo si son lo mismo el prisionero copera en caso contrario el prisionero traiciona
 
 # Rechazados
-
-
-### [31596746 Angel Rodriguez](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/Rechazados/AngelRodriguez.ts)
-$\color{red}{\textrm{Copia de Caire Montilla}}$
 
 ### [31535826 Jaiker Perez](https://github.com/victorequena22/DilemaDelPisionero/blob/main/Prisioneros/Rechazados/JaikerPerez.ts)
 $\color{red}{\textrm{Todos los participantes tienen mas de 5 caracteres lo que lo hace una copia de traidor}}$

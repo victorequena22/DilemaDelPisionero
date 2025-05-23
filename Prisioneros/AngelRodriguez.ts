@@ -1,5 +1,5 @@
-import { PrisioneroInterface } from "../../Prototipos/interface";
-import { Prisionero } from "../../Prototipos/Prisionero";
+import { PrisioneroInterface } from "../Prototipos/interface";
+import { Prisionero } from "../Prototipos/Prisionero";
 
 //De acuerdo al planteamiento del dilema original de Prisionero. Este prisionero actuara en función a evitar
 //el beneficio común con respecto a su complice, por lo tanto evaluará cúal fué la ultima relación que tuvo con él
