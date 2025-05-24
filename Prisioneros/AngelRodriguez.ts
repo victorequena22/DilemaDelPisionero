@@ -8,22 +8,28 @@ import { Prisionero } from "../Prototipos/Prisionero";
 //Angel Rodriguez 31.596.746
 
 
-export class AngelRodriguez extends Prisionero{
-    constructor(){
+export class AngelRodriguez extends Prisionero {
+    
+    /*******************************************************************/
+    /** Rompe el juego                                                 */
+    /** no usa se reviso bien el codigo                                */
+    /*******************************************************************/
+    nota = 7;
+    constructor() {
         super();
         this.setNombre("Angel Rodriguez");
-        
+
     }
     confesar(): boolean {
-        var complice: PrisioneroInterface= this.getComplice();
-         var historial=this.getHistorial(complice.getNombre());
+        var complice: PrisioneroInterface = this.getComplice();
+        var historial = this.getHistorial(complice.getNombre());
 
-        if(historial.length != 0){
-          var respuesta: boolean= !(historial[length -1])
-           return respuesta
+        if (historial.length != 0) {
+            var respuesta: boolean = !(historial[length - 1])
+            return respuesta
         }
 
         return true;
-    
+
     }
 }

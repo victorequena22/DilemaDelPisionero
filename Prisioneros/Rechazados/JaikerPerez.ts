@@ -5,6 +5,12 @@ import { Prisionero } from "../../Prototipos/Prisionero";
 // Nombre: Jaiker Pérez
 // C.I: 31.535.826
 export class JaikerPerez extends Prisionero {
+  /*******************************************************************/
+  /** Todos los participantes tienen mas de 5 caracteres lo que lo   */
+  /* hace una copia de traidor                                       */
+  /* revisa las codiciones antes de crearlas                         */
+  /*******************************************************************/
+  nota = 9;
   constructor() {
     super();
     this.setNombre('Jaiker Pérez');

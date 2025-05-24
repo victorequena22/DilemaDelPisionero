@@ -5,6 +5,7 @@ complice para ver que estrategia usar,
 si hay muchas confesiones cambia la estrategia y si el complice no ha  confesado coopera*/
 //Sara Ramos 32023260
 export class SaraRamos extends Prisionero {
+    nota = 15;
     constructor() {
         super();
         this.setNombre("Sara Ramos");

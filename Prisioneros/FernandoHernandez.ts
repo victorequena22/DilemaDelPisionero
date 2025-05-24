@@ -5,7 +5,12 @@ import { Prisionero } from "../Prototipos/Prisionero";
 // C.I.31800428
 
 export class FernandoHernandez extends Prisionero {
-    constructor(){
+    /*******************************************************************/
+    /** Se te olvido poner privados los metodos                        */
+    /** El metodo RespuestaComplice no sigue la norma de nombre        */
+    /*******************************************************************/
+    nota = 13;
+    constructor() {
         super();
         this.setNombre("Fernando Hernández")
     }
@@ -14,19 +19,20 @@ export class FernandoHernandez extends Prisionero {
         const ultimaRespuesta = complice.confesar(complice);
         return ultimaRespuesta;
     }
-confesarUltimo() {
-    const historial = this.getHistorial(this.getComplice().getNombre());
-    return historial.length > 0 ? historial[historial.length - 1] : null;
-}
-confesar(): boolean {
-    if(this.confesarUltimo() === this.RespuestaComplice()){
-        return false
-    }else if(this.getNombre() === this.getNombre()){
-        return false
+    confesarUltimo() {
+        const historial = this.getHistorial(this.getComplice().getNombre());
+        return historial.length > 0 ? historial[historial.length - 1] : null;
     }
-    else {
-    return true}
- }
- 
+    confesar(): boolean {
+        if (this.confesarUltimo() === this.RespuestaComplice()) {
+            return false
+        } else if (this.getNombre() === this.getNombre()) {
+            return false
+        }
+        else {
+            return true
+        }
+    }
+
 }
 

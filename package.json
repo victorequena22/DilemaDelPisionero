@@ -1,0 +1,24 @@
+{
+  "name": "dilema-del-prisionero",
+  "version": "1.0.0",
+  "description": "Este prisionero funciona de la siguiente manera:\r   - Si lo traicionan dos veces seguidas, activa un modo de traición automática.\r   - Si su cómplice ha traicionado al menos 2 veces en total y el prisionero \r   - No ha traicionado más de 3 veces, también traiciona.\r   - Si ya traiciono 3 veces, vuelve a cooperar.\r   - Si cooperan, se \"resetea\" y da otra oportunidad.",
+  "homepage": "https://github.com/victorequena22/DilemaDelPisionero#readme",
+  "bugs": {
+    "url": "https://github.com/victorequena22/DilemaDelPisionero/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/victorequena22/DilemaDelPisionero.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "Juego.js",
+  "scripts": {
+    "game": "tsx Juego.ts"
+  },
+  "dependencies": {
+    "tsx": "^4.19.4",
+    "typescript": "^5.8.3"
+  }
+}

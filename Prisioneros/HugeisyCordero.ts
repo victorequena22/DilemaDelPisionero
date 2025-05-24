@@ -7,6 +7,10 @@ import { Prisionero } from "../Prototipos/Prisionero";
 // Hugeisy Cordero 29754399
 
 export class HugeisyCordero extends Prisionero {
+    /*******************************************************************/
+    /** se te olvido poner privado el metodo decisionAleatoria        */
+    /*******************************************************************/
+    nota = 14;
     #estadoPorComplice: {
         [nombre: string]: {
             perdonando: boolean,

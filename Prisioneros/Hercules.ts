@@ -18,12 +18,17 @@ Finalmente, se suman estos datos de cada contrincante anterior para tomar una de
 CI: 31987430
 */
 
-export class Hercules extends Prisionero 
-{
+export class Hercules extends Prisionero {
+    /*******************************************************************/
+    /** Se te olvido poner el Apellido                                 */
+    /** se te olvido poner privados los metodos getHistorialTomado     */
+    /* y getHistorialIntuido                                           */
+    /*******************************************************************/
+    nota = 13;
     #todos_complices: string[] = [];
     #historial_intuido: Record<string, any> = {};
 
-    constructor(){
+    constructor() {
         super();
         this.setNombre("Heracles Sánchez");
     }
@@ -33,82 +38,64 @@ export class Hercules extends Prisionero
         }
         return arreglo[nombre];
     }
-    getHistorialIntuido(nombre: string, subnombre: string)
-    {
-            if (!this.#historial_intuido[nombre]) 
-            {
-                this.#historial_intuido[nombre] = {};
+    getHistorialIntuido(nombre: string, subnombre: string) {
+        if (!this.#historial_intuido[nombre]) {
+            this.#historial_intuido[nombre] = {};
+        }
+        if (nombre != subnombre) {
+            if (!this.#historial_intuido[nombre][subnombre]) {
+                this.#historial_intuido[nombre][subnombre] = [];
             }
-            if(nombre != subnombre)
-            {
-                if (!this.#historial_intuido[nombre][subnombre]) 
-                {
-                    this.#historial_intuido[nombre][subnombre] = [];
-                }
-            }
+        }
         return this.#historial_intuido[nombre][subnombre];
     }
-    #grabarNombre()
-    {
+    #grabarNombre() {
         var nombre_comp: string = this.getComplice().getNombre();
-        if (!this.#todos_complices.includes(nombre_comp))
-        {
+        if (!this.#todos_complices.includes(nombre_comp)) {
             this.#todos_complices.push(nombre_comp);
         }
         return nombre_comp;
     }
-    #filtrarHistorial() 
-    { 
-    var mi_complice: PrisioneroInterface = this.getComplice(); 
-    this.#todos_complices.forEach(contrincante => 
-        {
-            if(mi_complice.getNombre() != contrincante)
-            {
-                if(mi_complice.getHistorial(contrincante).length != 0)
-                {
+    #filtrarHistorial() {
+        var mi_complice: PrisioneroInterface = this.getComplice();
+        this.#todos_complices.forEach(contrincante => {
+            if (mi_complice.getNombre() != contrincante) {
+                if (mi_complice.getHistorial(contrincante).length != 0) {
                     this.getHistorialIntuido(mi_complice.getNombre(), contrincante).length = 0;
-                    mi_complice.getHistorial(contrincante).forEach(booleano => 
-                    {
+                    mi_complice.getHistorial(contrincante).forEach(booleano => {
                         this.getHistorialIntuido(mi_complice.getNombre(), contrincante).push(booleano);
                     });
                 }
             }
         });
     }
-    confesar()
-    {
-        if (this.getComplice().getNombre() == this.getNombre())
-        {
+    confesar() {
+        if (this.getComplice().getNombre() == this.getNombre()) {
             return false;
         }
         var nombre_comp: string = this.#grabarNombre();
         this.#filtrarHistorial();
         var fiabilidad: number = 0;
         var cant_casos: number = 0;
-        this.#todos_complices.forEach(chismoso => 
-            {
-                if (chismoso != nombre_comp)
-                {
-                    var chismoso_cooperas: number = this.getHistorial(chismoso).filter(conf => conf == true).length;
-                    var chismoso_traiciones: number = this.getHistorial(chismoso).filter(conf => conf == false).length;
-                    var traiciones_rumor: number = this.getHistorialIntuido(chismoso, nombre_comp).filter(conf => conf == true).length;
-                    var coopera_rumor: number = this.getHistorialIntuido(chismoso, nombre_comp).filter(conf => conf == false).length;
-                    if(chismoso_cooperas != 0 || chismoso_traiciones != 0)
-                    {
-                        if((chismoso_cooperas >= chismoso_traiciones))
-                        {
-                            fiabilidad = fiabilidad + Number(coopera_rumor >= traiciones_rumor);
-                            cant_casos += 1;
-                        }
-                        else
-                        {
-                            fiabilidad = fiabilidad + Number(coopera_rumor < traiciones_rumor);
-                            cant_casos += 1;
-                        }
+        this.#todos_complices.forEach(chismoso => {
+            if (chismoso != nombre_comp) {
+                var chismoso_cooperas: number = this.getHistorial(chismoso).filter(conf => conf == true).length;
+                var chismoso_traiciones: number = this.getHistorial(chismoso).filter(conf => conf == false).length;
+                var traiciones_rumor: number = this.getHistorialIntuido(chismoso, nombre_comp).filter(conf => conf == true).length;
+                var coopera_rumor: number = this.getHistorialIntuido(chismoso, nombre_comp).filter(conf => conf == false).length;
+                if (chismoso_cooperas != 0 || chismoso_traiciones != 0) {
+                    if ((chismoso_cooperas >= chismoso_traiciones)) {
+                        fiabilidad = fiabilidad + Number(coopera_rumor >= traiciones_rumor);
+                        cant_casos += 1;
+                    }
+                    else {
+                        fiabilidad = fiabilidad + Number(coopera_rumor < traiciones_rumor);
+                        cant_casos += 1;
                     }
                 }
-            });
-            
-        return (fiabilidad > cant_casos/2);
+            }
+        });
+
+        return (fiabilidad > cant_casos / 2);
     }
 }

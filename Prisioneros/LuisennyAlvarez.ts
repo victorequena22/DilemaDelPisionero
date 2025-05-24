@@ -8,6 +8,10 @@ import { Prisionero } from "../Prototipos/Prisionero";
  de esta forma si el complice no posee historial alguno*/
 //CI: 29624120
 export class LuisennyAlvarez extends Prisionero {
+  /***************************************************************/
+  /** se te olvido poner privado el metodo medianaEstadistica    */
+  /***************************************************************/
+  nota = 13;
   constructor() {
     super()
     this.setNombre("Luisenny Alvarez");

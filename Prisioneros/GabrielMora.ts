@@ -3,6 +3,7 @@ import { Prisionero } from "../Prototipos/Prisionero";
 //de lo contrario solo cooperará
 // Gabriel Mora 32.623.667
 export class GabrielMora extends Prisionero {
+    nota = 15;
     constructor() {
         super();
         this.setNombre('Gabriel Mora');

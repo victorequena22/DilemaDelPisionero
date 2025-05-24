@@ -6,7 +6,12 @@ import { Prisionero } from "../Prototipos/Prisionero";
 //Cada 5 jugadas, el ciclo se reinicia y vuelve a empezar.
 // V-30560368
 export class RonnyPerez extends Prisionero {
-  private contador: number = 0;
+    /***************************************************************/
+    /** Se te olvido poner privados los atributos                  */
+    /* No se explica correctamente el comportamiento del codigo    */
+    /***************************************************************/
+    nota = 13;
+    private contador: number = 0;
     private modo: "normal" | "cooperando" | "castigando" = "normal";
     private coopRestantes: number = 0;
     private castigoRestante: number = 0;

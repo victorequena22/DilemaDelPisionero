@@ -5,6 +5,10 @@ import { InterrogadorInterface, PrisioneroInterface } from "../Prototipos/interf
 // LeanmarGonzalez 31885162 
 
 export class LeanmarGonzalez extends Prisionero {
+    /***************************************************************/
+    /** se te olvido poner privados los metodos y atributos        */
+    /***************************************************************/
+    nota = 13;
     private patrones: Map<string, string[]>;
     private profundidadAnalisis: number;
 
@@ -15,7 +19,7 @@ export class LeanmarGonzalez extends Prisionero {
         this.profundidadAnalisis = 4; // Analiza secuencias de hasta 4 movimientos
     }
 
-    confesar(interrogador?: InterrogadorInterface | PrisioneroInterface): boolean {
+    confesar(): boolean {
         const complice = this.getComplice();
         const nombreComplice = complice.getNombre();
         const historialComplice = this.getHistorial(nombreComplice);

@@ -8,6 +8,7 @@ import { InterrogadorInterface, PrisioneroInterface } from "../Prototipos/interf
 // En cualquier otro caso, copia la última jugada del cómplice.
 // CI: 31371373
 export class KisbelMontes extends Prisionero {
+    nota = 15;
     constructor() {
         super();
         this.setNombre("Kisbel Montes");

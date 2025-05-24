@@ -5,6 +5,7 @@ export class Prisionero extends Persona implements PrisioneroInterface {
     #sentencia: number = 0;
     #complice: PrisioneroInterface;
     #interrogador: InterrogadorInterface;
+    nota = 0;
     //get
     getSentencia() { return this.#sentencia; }
     getComplice() { return this.#complice; }

@@ -10,6 +10,7 @@ import { Prisionero } from "../Prototipos/Prisionero";
 // Luis Cordero C.I:30.803.750
 
 export class LuisCordero extends Prisionero {
+  nota = 15;
   constructor() {
     super();
     this.setNombre('Luis Cordero');

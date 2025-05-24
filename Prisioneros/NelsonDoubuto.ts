@@ -4,6 +4,7 @@ import { Prisionero } from "../Prototipos/Prisionero";
 // en ronda par coopera (no confiesa) y en ronda impar confiesa.
 // V32163215
 export class NelsonDoubuto extends Prisionero {
+    nota = 15;
     constructor() {
         super();
         this.setNombre('Nelson Doubuto');

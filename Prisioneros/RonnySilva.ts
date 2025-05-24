@@ -13,8 +13,16 @@
 
 import { Prisionero } from "../Prototipos/Prisionero";
 
+
 //CI: 31147462
 export class RonnySilva extends Prisionero {
+  /***************************************************************/
+  /** Se te olvido poner privados los atributos                  */
+  /* No se explica correctamente el comportamiento del codigo    */
+  /* Cuendo entra en "paranoia máxima" se convienrte en traidor  */
+  /* indiferentemente del complice                               */
+  /***************************************************************/
+  nota = 11;
   constructor() {
     super();
     this.setNombre("Ronny Silva");

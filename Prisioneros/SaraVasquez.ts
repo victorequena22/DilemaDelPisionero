@@ -9,6 +9,10 @@ import { Prisionero } from "../Prototipos/Prisionero";
 // CI:32314946
 
 export class SaraVasquez extends Prisionero {
+    /***************************************************************/
+    /** Se te olvido poner privados los Atributos                  */
+    /***************************************************************/
+    nota = 14;
     private enCastigo: Record<string, boolean> = {};
     private cooperacionesDespuesDeTraicion: Record<string, number> = {};
 

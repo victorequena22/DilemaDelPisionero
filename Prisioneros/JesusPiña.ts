@@ -5,6 +5,7 @@ import { Prisionero } from "../Prototipos/Prisionero";
 // Si hay empate, copia la última jugada del cómplice. Busca minimizar su condena adaptándose al rival.
 // CI: 31836101
 export class JesusPiña extends Prisionero {
+    nota = 15;
     constructor() {
         super();
         this.setNombre("Jesus Piña");

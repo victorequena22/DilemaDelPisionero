@@ -5,6 +5,11 @@ cantidad de veces que a sido traicionado y cunatas veces no a  traicionado*/
 //CI:33.091.874
 export class JesusFernandez extends Prisionero {
 
+    /***************************************************************/
+    /** No se aplicaron las correcciones                           */
+    /** No funciona correctamente                                  */
+    /***************************************************************/
+    nota = 7;
 
     #traiciones: number;
     #noTraiciones: number;

@@ -13,6 +13,11 @@ import { InterrogadorInterface, PrisioneroInterface } from "../Prototipos/interf
 // la indecisión y la traición excesiva.
 // CI: 31759361
 export class HellyRamirez extends Prisionero {
+    /*******************************************************************/
+    /** Se te olvido poner privados el el Atributo castigoActivo       */
+    /** No se explica correctamente el comportamiento del codigo       */
+    /*******************************************************************/
+    nota = 13;
     private castigoActivo = 0;
     constructor() {
         super();

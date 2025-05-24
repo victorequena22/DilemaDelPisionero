@@ -6,7 +6,12 @@ import { Prisionero } from "../Prototipos/Prisionero";
 //Andres Alvarado 31.737.593
 
 export class AndresAlavarado extends Prisionero {
-      private ronda: number = 0;
+    private ronda: number = 0;
+    
+    /*******************************************************************/
+    /** se te olvido poner privado el atributo ronda                   */
+    /*******************************************************************/
+    nota = 14;
 
     constructor() {
         super();
@@ -44,10 +49,9 @@ export class AndresAlavarado extends Prisionero {
         return false;
     }
 }
-     
 
 
 
-   
 
-  
+
+

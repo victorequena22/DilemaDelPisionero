@@ -5,6 +5,12 @@ import { PrisioneroInterface } from "../Prototipos/interface";
 // y si el complice coopera e traiciona por 2 rondas
 // Frankie Sanchez C.I: 32.527.670
 export class FrankieSanchez extends Prisionero implements PrisioneroInterface {
+    /*******************************************************************/
+    /** Se te olvido poner privados los Atributos                      */
+    /** Se te olvido poner privados el metodo getUltimaAccionComplice  */
+    /*******************************************************************/
+    nota = 12;
+
     private numeroRonda: number = 0;
     private rondasPendientesDeAccion: number = 0;
     private accionActualPendiente: boolean | null = null;
@@ -42,7 +48,7 @@ export class FrankieSanchez extends Prisionero implements PrisioneroInterface {
         const accionCompliceAnterior = this.getUltimaAccionComplice();
 
         if (accionCompliceAnterior === undefined) {
-             return true;
+            return true;
         }
 
         if (accionCompliceAnterior === false) {

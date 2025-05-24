@@ -6,6 +6,7 @@ import { Prisionero } from "../Prototipos/Prisionero";
 // V31925657
 
 export class GabrielaRodriguez extends Prisionero {
+    nota = 15;
     
     #conocimiento: Record<string, {
         alma: 'bondad' | 'egoismo' | 'caos' | 'miedo',

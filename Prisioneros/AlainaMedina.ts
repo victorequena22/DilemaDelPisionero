@@ -9,7 +9,12 @@ import { Prisionero } from "../Prototipos/Prisionero";
 // Alaina Medina 31027740
 export class AlainaMedina extends Prisionero {
     #historialPorPrisionero: { [nombre: string]: { VecesTraicionado: number; VecesQueTraicione: number; ConfesionesSeguidas: number; Perdones: number } } = {};
-
+    
+    /*******************************************************************/
+    /** se te olvido poner privados los metodos                        */
+    /** el metodo ObtenerDatosDelPrisionero no sigue la norma de nombre*/
+    /*******************************************************************/
+    nota = 13;
     constructor() {
         super();
         this.setNombre('Alaina Medina')

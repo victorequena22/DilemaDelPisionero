@@ -8,6 +8,10 @@ import { Prisionero } from "../Prototipos/Prisionero";
 //V31926589
 
 export class SantiagoSanchez extends Prisionero {
+    /***************************************************************/
+    /** Declarate el atributo #estrategia pero no la usaste        */
+    /***************************************************************/
+    nota = 14;
 
     #decidir(historial: boolean[]): boolean {
 

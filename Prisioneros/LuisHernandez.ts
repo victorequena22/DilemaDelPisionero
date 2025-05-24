@@ -5,6 +5,10 @@ ha colaborado es mayor o igual que 1, sigue la serie de Fibonacci y a su vez
 es mayor al numero de veces que el confiesa*/
 //CI: 13267720
 export class LuisHernandez extends Prisionero {
+    /***************************************************************/
+    /** se te olvido poner privado el metodo calTendencia          */
+    /***************************************************************/
+    nota = 14;
     constructor() {
         super()
         this.setNombre("Luis Hernandez");

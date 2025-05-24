@@ -2,6 +2,11 @@ import { Prisionero } from "../Prototipos/Prisionero";
 // Este prisionero copia la última acción de su cómplice.
 // 31367742
 export class MarielbysRodriguez extends Prisionero {
+    /***************************************************************/
+    /** Se te olvido definir el tipo de dato de interrogador en el */
+     /* metodo confesar(interrogador)                              */
+    /***************************************************************/
+    nota = 14;
     constructor() {
         super();
         this.setNombre('Marielbys Rodriguez');

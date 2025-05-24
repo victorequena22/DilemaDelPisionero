@@ -5,6 +5,7 @@ export interface PersonaInterface {
     setHistorial: (historial: any) => void;
 }
 export interface PrisioneroInterface extends PersonaInterface {
+    nota: number
     getSentencia: () => number;
     setSentencia: (sentencia: number) => void;
     getComplice: () => PrisioneroInterface;

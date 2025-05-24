@@ -3,7 +3,8 @@ import { Prisionero } from "../Prototipos/Prisionero";
 // si son lo mismo el prisionero copera en caso contrario el prisionero traiciona
 //31.643.528
 export class YaralysGimenez extends Prisionero {
-    constructor(){
+    nota = 15;
+    constructor() {
         super();
         this.setNombre('YaralysGimenez')
     }

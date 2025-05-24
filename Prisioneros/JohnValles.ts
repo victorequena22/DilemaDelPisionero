@@ -12,6 +12,7 @@ import { Prisionero } from "../Prototipos/Prisionero";
 // CI: 31131987
 
 export class JohnValles extends Prisionero {
+    nota = 15;
     constructor() {
         super();
         this.setNombre("John Valles");
