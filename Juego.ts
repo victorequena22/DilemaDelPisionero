@@ -2,43 +2,43 @@
 import { styleText } from 'node:util';
 import { InterrogadorSimple } from "./Interrogadores/InterrogadorSimple";
 import { JuezSimple } from "./Jueces/JuezSimple";
-import { NelsonDoubuto } from "./Prisioneros/NelsonDoubuto";
+import { NelsonDoubuto } from "./Prisioneros/Clase_2025_1/NelsonDoubuto";
 // import { Confiable } from "./Prisioneros/Profesor/Confiable";
 // import { Indeciso } from "./Prisioneros/Profesor/Indeciso";
 // import { Redentor } from "./Prisioneros/Profesor/Redentor";
 // import { Traidor } from "./Prisioneros/Profesor/Traidor";
 // import { Vengador } from "./Prisioneros/Profesor/Vengador";
 import { InterrogadorInterface, JuezInterface, PrisioneroInterface } from "./Prototipos/interface";
-import { SaraRamos } from "./Prisioneros/SaraRamos";
-import { CaireMontilla } from "./Prisioneros/CaireMontilla";
-import { JesusFernandez } from "./Prisioneros/JesusFernandez";
-import { SantiagoSanchez } from "./Prisioneros/SantiagoSanchez";
-import { GabrielMora } from "./Prisioneros/GabrielMora";
-import { LuisPerez } from "./Prisioneros/LuisPerez.ts";
-import { LuisHernandez } from "./Prisioneros/LuisHernandez";
-import { AlainaMedina } from "./Prisioneros/AlainaMedina";
-import { GabrielaRodriguez } from "./Prisioneros/GabrielaRodriguez";
-import { HellyRamirez } from "./Prisioneros/HellyRamirez";
-import { JesusPiña } from "./Prisioneros/JesusPiña";
-import { JohnValles } from "./Prisioneros/JohnValles";
-import { FernandoHernandez } from "./Prisioneros/FernandoHernandez";
-import { KisbelMontes } from "./Prisioneros/KisbelMontes";
-import { LeanmarGonzalez } from "./Prisioneros/LeanmarGonzalez";
-import { LuisennyAlvarez } from "./Prisioneros/LuisennyAlvarez";
-import { SalomonParra } from "./Prisioneros/SalomonParra";
-import { SaraVasquez } from "./Prisioneros/SaraVasquez";
-import { AndresAlavarado } from "./Prisioneros/AndresAlavarado";
-import { AngelMarquez } from "./Prisioneros/AngelMarquez";
-import { AngelRodriguez } from "./Prisioneros/AngelRodriguez";
-import { FaustoGarcia } from "./Prisioneros/FaustoGarcia";
-import { FrankieSanchez } from "./Prisioneros/FrankieSanchez";
-import { Hercules } from "./Prisioneros/Hercules";
-import { HugeisyCordero } from "./Prisioneros/HugeisyCordero";
-import { LuisCordero } from "./Prisioneros/LuisCordero.ts";
-import { MarielbysRodriguez } from "./Prisioneros/MarielbysRodriguez.ts";
-import { RonnyPerez } from "./Prisioneros/RonnyPerez.ts";
-import { RonnySilva } from "./Prisioneros/RonnySilva.ts";
-import { YaralysGimenez } from "./Prisioneros/YaralysGimenez.ts";
+import { SaraRamos } from "./Prisioneros/Clase_2025_1/SaraRamos";
+import { CaireMontilla } from "./Prisioneros/Clase_2025_1/CaireMontilla";
+import { JesusFernandez } from "./Prisioneros/Clase_2025_1/JesusFernandez";
+import { SantiagoSanchez } from "./Prisioneros/Clase_2025_1/SantiagoSanchez";
+import { GabrielMora } from "./Prisioneros/Clase_2025_1/GabrielMora";
+import { LuisPerez } from "./Prisioneros/Clase_2025_1/LuisPerez.ts";
+import { LuisHernandez } from "./Prisioneros/Clase_2025_1/LuisHernandez";
+import { AlainaMedina } from "./Prisioneros/Clase_2025_1/AlainaMedina";
+import { GabrielaRodriguez } from "./Prisioneros/Clase_2025_1/GabrielaRodriguez";
+import { HellyRamirez } from "./Prisioneros/Clase_2025_1/HellyRamirez";
+import { JesusPiña } from "./Prisioneros/Clase_2025_1/JesusPiña";
+import { JohnValles } from "./Prisioneros/Clase_2025_1/JohnValles";
+import { FernandoHernandez } from "./Prisioneros/Clase_2025_1/FernandoHernandez";
+import { KisbelMontes } from "./Prisioneros/Clase_2025_1/KisbelMontes";
+import { LeanmarGonzalez } from "./Prisioneros/Clase_2025_1/LeanmarGonzalez";
+import { LuisennyAlvarez } from "./Prisioneros/Clase_2025_1/LuisennyAlvarez";
+import { SalomonParra } from "./Prisioneros/Clase_2025_1/SalomonParra";
+import { SaraVasquez } from "./Prisioneros/Clase_2025_1/SaraVasquez";
+import { AndresAlavarado } from "./Prisioneros/Clase_2025_1/AndresAlavarado";
+import { AngelMarquez } from "./Prisioneros/Clase_2025_1/AngelMarquez";
+import { AngelRodriguez } from "./Prisioneros/Clase_2025_1/AngelRodriguez";
+import { FaustoGarcia } from "./Prisioneros/Clase_2025_1/FaustoGarcia";
+import { FrankieSanchez } from "./Prisioneros/Clase_2025_1/FrankieSanchez";
+import { Hercules } from "./Prisioneros/Clase_2025_1/Hercules";
+import { HugeisyCordero } from "./Prisioneros/Clase_2025_1/HugeisyCordero";
+import { LuisCordero } from "./Prisioneros/Clase_2025_1/LuisCordero.ts";
+import { MarielbysRodriguez } from "./Prisioneros/Clase_2025_1/MarielbysRodriguez.ts";
+import { RonnyPerez } from "./Prisioneros/Clase_2025_1/RonnyPerez.ts";
+import { RonnySilva } from "./Prisioneros/Clase_2025_1/RonnySilva.ts";
+import { YaralysGimenez } from "./Prisioneros/Clase_2025_1/YaralysGimenez.ts";
 
 
 class Juego {
@@ -114,7 +114,6 @@ class Juego {
             this.ronda();
         }
         console.log(`${styleText('bgYellow', "No")}|${styleText('bgGreen', this.tap(" Pts", 6))}|${styleText('bgRed', this.tap(" Nombre y Apellido", 20))}|${styleText('bgBlue', "Nota")}`);
-
         this.#casos
             .sort((p1, p2) => p1.getSentencia() - p2.getSentencia())
             .forEach(this.mostrar)

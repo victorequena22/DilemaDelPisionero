@@ -1,0 +1,38 @@
+//Primer juego
+        1 |316   |Ronny Silva         | 11
+        2 |320   |Hugeisy Cordero     | 14
+        3 |325   |YaralysGimenez      | 15
+        .
+        .
+        .
+        27|413   |Fernando Hernández  | 13
+        28|417   |Salomon Parra       | 14
+        29|418   |Andres Alavarado    | 14
+
+//segundo juego
+
+        1 |2889  |Gabriela Rodríguez  | 15
+        2 |2903  |Ronny Silva         | 11
+        3 |3351  |Sara Vasquez        | 14
+        .
+        .
+        .
+        27|4661  |Nelson Doubuto      | 15
+        28|4695  |Luis Cordero        | 15
+        29|4811  |Alaina Medina       | 13
+
+//tercer juego
+
+        1 |28784 |Gabriela Rodríguez  | 15
+        2 |29038 |Ronny Silva         | 11
+        3 |32506 |Sara Vasquez        | 14
+        .
+        .
+        .
+        27|46898 |Kisbel Montes       | 15
+        28|49013 |Luis Cordero        | 15
+        29|49101 |Alaina Medina       | 13
+
+
+Ganadores del Juego 
+Gabriela Rodríguez y Alaina Medina
