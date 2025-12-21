@@ -1,23 +1,22 @@
-import { InterrogadorInterface, JuezInterface } from "./interface";
+import { Interrogador } from "./Interrogador";
 import { Persona } from "./Persona";
 
 
-export class Juez extends Persona implements JuezInterface {
-    #interrogador: InterrogadorInterface
+export class Juez extends Persona {
+    #interrogador!: Interrogador
+    #historial: Record<string, boolean[]> = {};
     //overwrite
-    getNombre() {
-        return 'Juez ' + super.getNombre();
-    };
-    setInterrogador(interrogador: InterrogadorInterface) {
-        this.#interrogador = interrogador;
-    };
+    get nombre() { return 'Juez ' + super.nombre; };
+    set nombre(nombre: string) { super.nombre = nombre; };
+    get historial() { return this.#historial; }
+    set interrogador(interrogador: Interrogador) { this.#interrogador = interrogador; };
     juicio() {
-        var confecion1 = this.#interrogador.getRespuesta1();
-        var confecion2 = this.#interrogador.getRespuesta2();
-        var prisionero1 = this.#interrogador.getPrisionero1();
-        var prisionero2 = this.#interrogador.getPrisionero2();
-        this.getHistorial(prisionero1.getNombre()).push(confecion1);
-        this.getHistorial(prisionero2.getNombre()).push(confecion2);
+        var confecion1 = this.#interrogador.respuesta1;
+        var confecion2 = this.#interrogador.respuesta2;
+        var prisionero1 = this.#interrogador.prisionero1;
+        var prisionero2 = this.#interrogador.prisionero2;
+        this.Historial1.push(confecion1);
+        this.Historial2.push(confecion2);
         if (confecion1 && confecion2) {
             prisionero1.juicio(5);
             prisionero2.juicio(5);
@@ -33,6 +32,18 @@ export class Juez extends Persona implements JuezInterface {
                 prisionero1.juicio(10);
             }
         }
+    }
+    get Historial1() {
+        if(this.#historial[this.#interrogador.prisionero1.nombre] === undefined){
+            this.#historial[this.#interrogador.prisionero1.nombre] = [];
+        }
+        return this.#historial[this.#interrogador.prisionero1.nombre];
+    }
+    get Historial2() {
+        if(this.#historial[this.#interrogador.prisionero2.nombre] === undefined){
+            this.#historial[this.#interrogador.prisionero2.nombre] = [];
+        }
+        return this.#historial[this.#interrogador.prisionero2.nombre];
     }
 
 }

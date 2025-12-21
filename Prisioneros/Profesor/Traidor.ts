@@ -3,7 +3,7 @@ import { Prisionero } from "../../Prototipos/Prisionero";
 export class Traidor extends Prisionero {
     constructor() {
         super();
-        this.setNombre('Traidor')
+        this.nombre = 'Traidor';
     }
     confesar() { return true; }
 }

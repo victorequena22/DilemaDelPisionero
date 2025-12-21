@@ -1,25 +1,35 @@
-import { InterrogadorInterface, PrisioneroInterface } from "./interface";
+import { Interrogador } from "./Interrogador";
 import { Persona } from "./Persona";
 
-export class Prisionero extends Persona implements PrisioneroInterface {
+export class Prisionero extends Persona {
     #sentencia: number = 0;
-    #complice: PrisioneroInterface;
-    #interrogador: InterrogadorInterface;
+    #interrogador!: Interrogador;
+    #complice!: Prisionero;
+    #historial: Record<string, boolean[]> = {};
     nota = 0;
     //get
-    getSentencia() { return this.#sentencia; }
-    getComplice() { return this.#complice; }
+    get complice() { return this.#complice; }
+    get sentencia() { return this.#sentencia; }
+    get historial() {
+        const n = this.#complice.nombre;
+        if (this.#historial[n] === undefined) {
+            this.#historial[n] = [];
+        }
+        return this.#historial[n];
+    }
     //set
-    setSentencia(sentencia: number) { this.#sentencia = sentencia; }
-    setComplice(complice: PrisioneroInterface) { this.#complice = complice; }
-    setInterrogador(interrogador: InterrogadorInterface) { this.#interrogador = interrogador; }
+    set complice(complice: Prisionero) { this.#complice = complice; }
+    set interrogador(interrogador: Interrogador) { this.#interrogador = interrogador; }
+    set historial(historial: boolean[]) {
+        this.#historial[this.#complice.nombre] = historial;
+    }
     //metodos 
-    confesar(_i: InterrogadorInterface | PrisioneroInterface) { return false; }
+    confesar(_i: Interrogador) { return false; }
     juicio(condena: number) {
-        if (this.#interrogador.getPrisionero1().getNombre() !== this.getNombre()) {
-            this.getHistorial(this.#complice.getNombre()).push(this.#interrogador.getRespuesta1());
+        if (this.#interrogador.prisionero1.nombre !== this.nombre) {
+            this.historial.push(this.#interrogador.respuesta1);
         } else {
-            this.getHistorial(this.#complice.getNombre()).push(this.#interrogador.getRespuesta2());
+            this.historial.push(this.#interrogador.respuesta2);
         }
         this.#sentencia += condena;
     }

@@ -3,7 +3,7 @@ import { Prisionero } from "../../Prototipos/Prisionero";
 export class Indeciso extends Prisionero {
     constructor() {
         super();
-        this.setNombre('Indeciso')
+        this.nombre = 'Indeciso';
     }
     confesar() { 
         return Math.round(Math.random()) === 1;

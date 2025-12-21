@@ -3,10 +3,9 @@ import { Prisionero } from "../../Prototipos/Prisionero";
 export class Vengador extends Prisionero {
     constructor() {
         super();
-        this.setNombre('Vengador')
+        this.nombre = 'Vengador';
     }
     confesar() {
-        const historial = this.getHistorial(this.getComplice().getNombre());
-        return historial.includes(true);
+        return this.historial.includes(true);
     }
 }
