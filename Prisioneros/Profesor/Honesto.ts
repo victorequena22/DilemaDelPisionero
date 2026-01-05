@@ -1,9 +1,9 @@
 import { Prisionero } from "../../Prototipos/Prisionero";
 //Nunca confies en el.
-export class Traidor extends Prisionero {
+export class Honesto extends Prisionero {
     constructor() {
         super();
-        this.nombre = 'Traidor';
+        this.nombre = 'Honesto';
     }
     confesar() { return true; }
 }

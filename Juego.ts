@@ -5,7 +5,7 @@ import { Prisionero } from "./Prototipos/Prisionero";
 import { Interrogador } from "./Prototipos/Interrogador";
 import { Juez } from "./Prototipos/Juez";
 
-import { Traidor } from "./Prisioneros/Profesor/Traidor";
+import { Honesto } from "./Prisioneros/Profesor/Honesto";
 import { Confiable } from "./Prisioneros/Profesor/Confiable";
 import { Vengador } from "./Prisioneros/Profesor/Vengador";
 import { Redentor } from "./Prisioneros/Profesor/Redentor";
@@ -13,7 +13,7 @@ import { Indeciso } from "./Prisioneros/Profesor/Indeciso";
 import chalk from "chalk";
 class Juego {
     #casos: Prisionero[] = [
-        new Traidor(),
+        new Honesto(),
         new Confiable(),
         new Vengador(),
         new Redentor(),
