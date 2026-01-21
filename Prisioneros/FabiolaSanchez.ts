@@ -16,10 +16,13 @@
  * ---------------------------------------------------------------------
  */
 
-import { Prisionero } from "./Prototipos/Prisionero";
+import { Prisionero } from "../Prototipos/Prisionero";
 
 export class FabiolaSanchez extends Prisionero {
-    
+    nota = 0;
+    // No testa jugando el juego 
+    // No sigue las reglas de la guia
+
     private traicionado: boolean = false;
     private sumaAniosRecibidos: number = 0;
     private contadorRondas: number = 0;
