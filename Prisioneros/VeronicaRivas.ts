@@ -13,8 +13,10 @@ export class VeronicaRivas extends Prisionero {
 
     nota = 0;
     // No cumple con las reglas de las guias
-    // contadorEncuentros se usa.
-    // cuando entra en modoDefensivo no existe forma de cambiar lo que lo hace que actue como honesto
+    // contadorEncuentros se usa si no tiene uso en el codigo no vale para los puntos.
+    // Cuando entra en modoDefensivo 
+    // no existe forma de cambiar de modo por lo que actua igual honesto mas del 95% de las veces.
+    // no se permiten prisioneros que se comporten igual los que di como ejemplo 
 
     // Bandera: modo defensivo permanente activado
     #modoDefensivo: boolean = false;
