@@ -10,49 +10,64 @@ import { Interrogador } from "../Prototipos/Interrogador";
 //3. Si el oponente traiciona mucho: comenzar a confesar
 
 export class CarlosPerez extends Prisionero {
-    nota = 0;
-    // No se permiten porcentajes directos
-    // No cumple con las reglas de las guias
+    nota = 10;
+    // No explica correctamente la estrategia
     // rondas no hace nada en la toma de deciciones
-    // modo_defensivo no hace nada en la toma de deciciones
-    // interrogador y no es usado
-    // Albany Jimenez ya responde con la ultima respuesta del historial local
-
+    // interrogador no es usado
+    // No cumple con las reglas de las guias 
     // Contador de rondas
     private rondas: number = 0;
     
     // Bandera: estamos en modo defensivo?
     private modo_defensivo: boolean = false;
+
+    private traiciones_consecutivas : number = 0;
+
+    private rondas_en_defensivo: number = 0; 
     
     constructor() {
         super();
         this.nombre = 'Carlos Pérez';
     }
 
-    confesar(interrogador: Interrogador): boolean {
+        confesar(interrogador: Interrogador): boolean {
         this.rondas++;
         
-        // PRIMERA RONDA: Cooperar siempre
         if (this.rondas === 1) {
             return false;
         }
         
         if (this.historial.length === 0) {
-            // No hay historial aún, cooperar
             return false;
         }
         
-        // Obtener la última acción del oponente
         const ultima_accion_oponente = this.historial[this.historial.length - 1];
         
         if (ultima_accion_oponente) {
-            // El oponente confesó la última vez
-            this.modo_defensivo = true;
-            return true;
+            this.traiciones_consecutivas++;
+            this.rondas_en_defensivo = 0; // Reiniciar si hay nueva traición
         } else {
-            // El oponente cooperó la última vez
-            this.modo_defensivo = false;
-            return false;
+            this.traiciones_consecutivas = 0;
         }
+        
+        // Activar modo defensivo si hay 3 traiciones seguidas
+        if (this.traiciones_consecutivas >= 3) {
+            this.modo_defensivo = true;
+            this.rondas_en_defensivo = 1;
+        }
+        
+        if (this.modo_defensivo) {
+            this.rondas_en_defensivo++;
+            
+            // Después de 3 rondas en modo defensivo, salir
+            if (this.rondas_en_defensivo > 3) {
+                this.modo_defensivo = false;
+                this.rondas_en_defensivo = 0;
+            }
+            
+            return true;
+        }
+        
+        return ultima_accion_oponente;
     }
 }
