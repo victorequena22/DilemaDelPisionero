@@ -2,11 +2,20 @@ import { Interrogador } from "../Prototipos/Interrogador"
 import { Prisionero } from "../Prototipos/Prisionero";
 // Nombre: Daniela Brito
 // Cedula: 32224125
-// Estrategia: Coopera al inicio y activa defensa si detecta deslealtad.
+//Siempre coopera con colega ("Veronica Rivas").
+//Siempre confiesa contra antagonistas ("Jesus Cruz", "Albany Jimenez").
+//Si el cómplice no es colega ni antagonista, coopera durante las primeras 3 rondas.
+//A partir de la cuarta ronda, confiesa si:
+//El cómplice traicina mas de la mitad de las veces.
+//Nunca ha sido traicionada en 6 o más rondas.
+//O si la última ronda fue traición.
+//En cualquier otro caso, coopera.
 export class DanielaBrito extends Prisionero {
-    nota = 16;
+    
+    nota = 20;
     // No se explica correctamente estrategia 
-    // BANDERA: Colegas con los que siempre coopera
+
+    // BANDERA: Colega con quien siempre coopera
     #colegas = ["Veronica Rivas"];
     // BANDERA: Antagonistas con los que siempre confiesa
     #antagonistas = ["Jesus Cruz", "Albany Jimenez"];
