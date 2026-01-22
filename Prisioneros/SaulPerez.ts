@@ -1,62 +1,64 @@
 import { Prisionero } from '../Prototipos/Prisionero';
 
-// Nombre: Saul Perez
-// C.I: V-14.031.695
-// 1. Inicia cooperando (false) para establecer confianza.
-// 2. Utiliza una Estructura Acumulador para contar cuantas veces ha cooperado el rival.
-// 3. Basado en ese acumulador, define un limite de "Perdones" usando una bandera.
-// 4. Si el oponente traiciona, se evalua si aun quedan perdones disponibles segun el historial.
+/**
+ * Nombre: Saul Perez
+ * C.I: V-14.031.695
+ * Se eliminan los límites de perdón fijos. Ahora el perdón
+ * se recarga si el oponente demuestra 5 rondas de cooperación consecutivas.
+ * Uso explícito de Acumuladores de traición, 
+ * Contadores de paz y Banderas de estado (modoVenganza).
+ * El algoritmo permite la redención mutua,
+ * evitando caer en un bucle de castigo eterno que dañe la sentencia final.
+ */
 
 export class Saulperez extends Prisionero {
-    nota = 0;
+
+    nota = 15;
     // No sigue las reglas de las guias
-    // Una ves gastados los perdones quedas en honesto al ser numeros fijos no hay forma de que sea viable a largo plazo
-    // Atributos privados 
-    private perdonesUsados: number = 0;
-    private cooperacionesRecibidas: number = 0;
+
+
+    private traicionesRecibidas: number = 0;   // Acumulador
+    private pazConsecutiva: number = 0;        // Contador
+    private modoVenganza: boolean = false;     // Bandera
 
     constructor() {
-        super(); 
+        super();
         this.nombre = "Saul Perez";
     }
 
     public confesar(): boolean {
-        const miHistorial = this.historial; 
-        
-        // JUGADA 1: Cooperar (Estructura de inicio)
-        if (miHistorial.length === 0) {
-            return false;
-        }
-        
-        // 2. ACTUALIZACION (Estructura Acumulador)
-        const ultimaRespuesta = miHistorial[miHistorial.length - 1];
-        if (ultimaRespuesta === false) {
-            this.cooperacionesRecibidas++;
-            return false; // Si el otro cooperó, yo también coopero
-        }
+        const historial = this.historial;
+        const n = historial.length;
 
-        // 3. PERDON ( atribuye niveles de confianza)
-        if (this.evaluarPerdon()) {
-            this.perdonesUsados++;
-            return false; // Perdonar (Cooperar ante traición)
-        }
+        // Cooperación inicial para establecer confianza
+        if (n === 0) return false;
 
-        return true; // Traicionar si se agotaron los perdones
-    }
-    
-    
-    private evaluarPerdon(): boolean {
-        let limitePerdones: number;
-        
-        // Estructura de decisión basada en cantidad de cooperaciones acumuladas
-        if (this.cooperacionesRecibidas > 10) {
-            limitePerdones = 3;
-        } else if (this.cooperacionesRecibidas > 5) {
-            limitePerdones = 2;
+        // Actualiza (Basado en el historial del cómplice)
+        const ultimaAccion = historial[n - 1];
+        if (ultimaAccion === true) {
+            this.traicionesRecibidas++;
+            this.pazConsecutiva = 0;
         } else {
-            limitePerdones = 1;
+            this.pazConsecutiva++;
         }
-        
-        return this.perdonesUsados < limitePerdones;
+
+        // Si el oponente acumula 3 traiciones, activamos el castigo.
+        if (this.traicionesRecibidas >= 3) {
+            this.modoVenganza = true;
+        }
+
+        // Si el oponente coopera 5 veces seguidas, recuperamos la confianza.
+
+        if (this.pazConsecutiva >= 5) {
+            this.modoVenganza = false;
+            this.traicionesRecibidas = 0;
+        }
+
+        // Decisiones
+        if (this.modoVenganza) {
+            return true; // Confesar (Castigar)
+        }
+
+        return false; // Negar (Cooperar)
     }
 }
