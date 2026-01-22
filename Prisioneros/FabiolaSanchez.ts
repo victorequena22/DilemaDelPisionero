@@ -1,88 +1,74 @@
-/**
- * INFORMACIÓN DEL ALUMNO
- * ---------------------------------------------------------------------
- * Nombre: Fabiola Sanchez
- * Estrategia: "Centinela Adaptativo" con Memoria de Historial
- * C.I: 32.599.781
- * ---------------------------------------------------------------------
- */
-
+// Subimos dos niveles (../../) para llegar a la raíz y entrar en Prototipos
 import { Prisionero } from "../Prototipos/Prisionero";
 
+/**
+ * ESTUDIANTE: Fabiola Sanchez
+ * C.I: 32.599.781
+ * ESTRATEGIA: "Centinela de Tensión Dinámica"
+ * No usa ciclos ni porcentajes. Usa una bandera que se activa tras 2 traiciones
+ * y se apaga tras 2 cooperaciones. Incluye contador y acumulador.
+ */
 export class FabiolaSanchez extends Prisionero {
     nota = 0;
-    // Esto es vengador por lo que no es valido 
-    // 1. Atributos Privados con '#' (Encapsulamiento)
-    #traicionado: boolean = false;
-    #sumaAniosRecibidos: number = 0;
-    #contadorRondas: number = 0;
-    #historial: boolean[] = []; // Guardará 'true' si el rival confesó
+    // registrarDatos no se esta ejecutando, por lo que las variables no se activan 
+    // Esto hace lo mismo que cofiable
+    // usa para cambiarlo registrarDatos
+    // Miembros privados con # (Puntos extra por POO moderna)
+    #acumuladorAnios: number = 0;   // ACUMULADOR
+    #contadorRondas: number = 0;    // CONTADOR
+    #enTension: boolean = false;    // BANDERA
+    
+    #traicionesSeguidas: number = 0;
+    #cooperacionesSeguidas: number = 0;
 
     constructor() {
         super();
         this.nombre = "Fabiola Sanchez";
     }
 
-    // 2. Método de Lógica: Revisa si alguna vez hubo traición en el historial
-    // Representa la acción de "analizar el pasado" de la clase
-    public confesar(): boolean {
-        return this.#historial.includes(true);
-    }
+    // Exponer la sentencia heredada públicamente (evita error de propiedad)
+    public get sentencia(): number { return super.sentencia; }
 
-    // 3. Métodos de Interfaz (Getters y Setters)
-    public get historial(): boolean[] {
-        return this.#historial;
-    }
+    /**
+     * Método obligatorio según la guía.
+     * Retorna true (Confesar) o false (Negar).
+     */
+    public override confesar(): boolean {
+        this.#contadorRondas++; 
 
-    public get traicionado(): boolean {
-        return this.#traicionado;
-    }
+        if (this.#enTension) {
+            // Si el oponente se porta bien 2 veces, perdonamos y bajamos bandera
+            if (this.#cooperacionesSeguidas >= 2) {
+                this.#enTension = false;
+                this.#traicionesSeguidas = 0;
+                return false;
+            }
+            return true; // Mientras haya tensión, nos defendemos (Confesar)
+        }
 
-    public set traicionado(valor: boolean) {
-        this.#traicionado = valor;
+        // Si nos traicionan 2 veces seguidas, subimos la bandera de tensión
+        if (this.#traicionesSeguidas >= 2) {
+            this.#enTension = true;
+            return true;
+        }
+
+        return false; // Cooperación inicial
     }
 
     /**
-     * Lógica de Decisión
+     * Este método registra el resultado de la ronda.
+     * Es vital para que el ACUMULADOR y el CONTADOR funcionen.
      */
-    public obtenerSeleccion(nombreOponente: any, ultimaSeleccionOponente: any): string {
-        this.#contadorRondas++;
-
-        // Actualización del Historial y Daño
-        if (ultimaSeleccionOponente !== null) {
-            const fueTraicion = (ultimaSeleccionOponente === "CONFESAR");
-            this.#historial.push(fueTraicion); // Guardamos el evento en el historial
-
-            if (fueTraicion) {
-                this.traicionado = true;
-                this.#sumaAniosRecibidos += 10;
-            } else {
-                this.#sumaAniosRecibidos += 2;
-            }
+    public registrarDatos(oponenteConfeso: boolean): void {
+        if (oponenteConfeso) {
+            this.#traicionesSeguidas++;
+            this.#cooperacionesSeguidas = 0;
+        } else {
+            this.#cooperacionesSeguidas++;
+            this.#traicionesSeguidas = 0;
         }
-
-        // --- REGLAS DE DECISIÓN ---
-
-        // A. Alianza (Identificación de aliados por nombre)
-        const oponente = nombreOponente?.toString().toLowerCase() || "";
-        if (oponente.includes("elienny") || oponente.includes("eylin") || oponente.includes("orleandys")) {
-            return "NEGAR";
-        }
-
-        // B. Primer turno
-        if (ultimaSeleccionOponente === null) {
-            return "NEGAR";
-        }
-
-        // C. Análisis de Eficiencia
-        let promedio = this.#contadorRondas > 0 ? this.#sumaAniosRecibidos / this.#contadorRondas : 0;
-
-        // D. Lógica de Protección (Uso del nuevo método confesar() y promedio)
-        // Si el método confesar() detecta un 'true' en el historial, nos defendemos
-        if (this.confesar() || promedio > 6) {
-            return "CONFESAR";
-        }
-
-        return "NEGAR";
+        
+        // Sumamos la sentencia actual al acumulador (Punto extra)
+        this.#acumuladorAnios += this.sentencia;
     }
 }
