@@ -6,7 +6,7 @@
 
 import { Prisionero } from "../Prototipos/Prisionero"; // Agregamos un punto extra (..) para subir de carpeta
 
-export class JoseMartinez extends Prisionero {
+export class JoseGabrielMartinez extends Prisionero {
     nota = 0;
     // No esrta jugando el juego
     // No sigue las reglas de la guia

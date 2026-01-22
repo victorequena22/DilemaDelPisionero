@@ -4,15 +4,15 @@ import { Prisionero } from "../Prototipos/Prisionero";
   Cédula: 31.628.509
   Ing.Telematica Sección 2  
 
-  ESTRATEGIA:   
-  1. Si lo traicionan y era leal guarda/acumula rencor 
-  2. Si es un amigo es una bandera para no traicionar y bajar rencor 
-  3. Traiciona si ya no es leal, su rencor aumenta 
-  4. Si guarda mucho rencor > 3 traiciona 
+  ESTRATEGIA:   Este prisionero actua basado en su decision de ser leal a su complice (es decir no confiesa) 
+                o en cambio si ya ha guardado mucho rencor y traiciona.
+  1. Si lo traicionan cuando el era leal, guarda/acumula un punto de rencor y ya no tiene lealtad
+  2. Si es un amigo confiable, decide siempre ser leal ya que es una bandera para no traicionar y bajar un punto de rencor 
+  3. Si decide que ya no es leal, traiciona, mientras su rencor aumenta, aunque reflexiona para la proxima ser leal de nuevo
+  4. Si acumula mucho punto de rencor > 3 traiciona, y se desahoga llevando su rencor a 0 
  */
 export class JoseMartinez extends Prisionero{
-    nota = 18;
-    // Falta explicacion del la estrategia
+    nota = 19;
     #lealtad: boolean;
     #rencor: number
     #amigos_confiables: string []
