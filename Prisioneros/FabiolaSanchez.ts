@@ -1,74 +1,71 @@
-// Subimos dos niveles (../../) para llegar a la raíz y entrar en Prototipos
 import { Prisionero } from "../Prototipos/Prisionero";
 
 /**
  * ESTUDIANTE: Fabiola Sanchez
- * C.I: 32.599.781
- * ESTRATEGIA: "Centinela de Tensión Dinámica"
- * No usa ciclos ni porcentajes. Usa una bandera que se activa tras 2 traiciones
- * y se apaga tras 2 cooperaciones. Incluye contador y acumulador.
+ * CEDULA: 32.599.781
+ * ESTRATEGIA: "Protección Juvenil de Elienny"
+ * Explicación: Prisionero de 15 años. Alianza fija con Elienny.
+ 
  */
 export class FabiolaSanchez extends Prisionero {
-    nota = 0;
-    // registrarDatos no se esta ejecutando, por lo que las variables no se activan 
-    // Esto hace lo mismo que cofiable
-    // usa para cambiarlo registrarDatos
-    // Miembros privados con # (Puntos extra por POO moderna)
-    #acumuladorAnios: number = 0;   // ACUMULADOR
-    #contadorRondas: number = 0;    // CONTADOR
-    #enTension: boolean = false;    // BANDERA
-    
-    #traicionesSeguidas: number = 0;
-    #cooperacionesSeguidas: number = 0;
+    // Miembros privados con # (POO Moderna)
+#edad: number = 15; 
+    #aliadaFija: string = "Elienny";
+    #medidorConfianza: number = 100; // BANDERA
+    #contadorTraiciones: number = 0; // CONTADOR
+    #aniosAcumulados: number = 0;    // ACUMULADOR
+    #ultimaSentencia: number = 0;
 
     constructor() {
         super();
         this.nombre = "Fabiola Sanchez";
     }
 
-    // Exponer la sentencia heredada públicamente (evita error de propiedad)
+    // Propiedad pública para que el juez vea tus años acumulados
     public get sentencia(): number { return super.sentencia; }
 
-    /**
-     * Método obligatorio según la guía.
-     * Retorna true (Confesar) o false (Negar).
-     */
     public override confesar(): boolean {
-        this.#contadorRondas++; 
+        const nombreOponente = this.complice.nombre;
 
-        if (this.#enTension) {
-            // Si el oponente se porta bien 2 veces, perdonamos y bajamos bandera
-            if (this.#cooperacionesSeguidas >= 2) {
-                this.#enTension = false;
-                this.#traicionesSeguidas = 0;
-                return false;
-            }
-            return true; // Mientras haya tensión, nos defendemos (Confesar)
+        // Trabajo en equipo (Aliada Elienny)
+        if (nombreOponente.includes(this.#aliadaFija)) {
+            return false; 
         }
 
-        // Si nos traicionan 2 veces seguidas, subimos la bandera de tensión
-        if (this.#traicionesSeguidas >= 2) {
-            this.#enTension = true;
-            return true;
+        // Lógica de Bandera (Basada en confianza)
+        if (this.#medidorConfianza < 50) {
+            return true; // Se defiende si hay desconfianza
         }
 
-        return false; // Cooperación inicial
+        return false; 
     }
 
-    /**
-     * Este método registra el resultado de la ronda.
-     * Es vital para que el ACUMULADOR y el CONTADOR funcionen.
-     */
-    public registrarDatos(oponenteConfeso: boolean): void {
+    public recordar(oponenteConfeso?: boolean): void {
+        // Evita errores si el simulador no pasa el valor
+        if (oponenteConfeso === undefined) return;
+
         if (oponenteConfeso) {
-            this.#traicionesSeguidas++;
-            this.#cooperacionesSeguidas = 0;
+            this.#contadorTraiciones++; // Actualiza el CONTADOR
+            this.#medidorConfianza -= 35; // Baja la BANDERA
         } else {
-            this.#cooperacionesSeguidas++;
-            this.#traicionesSeguidas = 0;
+            if (this.#medidorConfianza < 100) this.#medidorConfianza += 10;
         }
+
+        // Lógica del ACUMULADOR
+        const condenaRonda = this.sentencia - this.#ultimaSentencia;
+        if (condenaRonda > 0) {
+            this.#aniosAcumulados += condenaRonda;
+        }
+        this.#ultimaSentencia = this.sentencia;
+    }
+
+    public override juicio(condena: number): void {
+        super.juicio(condena);
         
-        // Sumamos la sentencia actual al acumulador (Punto extra)
-        this.#acumuladorAnios += this.sentencia;
+        // Detectar traición según las reglas  (3 y 10 años)
+        const oponenteTraiciono = (condena === 3 || condena === 10);
+        
+        // Ejecución obligatoria de la memoria
+        this.recordar(oponenteTraiciono);
     }
 }
