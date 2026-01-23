@@ -5,11 +5,13 @@ import { Prisionero } from "../Prototipos/Prisionero";
  * CEDULA: 32.599.781
  * ESTRATEGIA: "Protección Juvenil de Elienny"
  * Explicación: Prisionero de 15 años. Alianza fija con Elienny.
- 
  */
 export class FabiolaSanchez extends Prisionero {
+
+    nota = 18;
+    // no sigue las reglas de la guia
     // Miembros privados con # (POO Moderna)
-#edad: number = 15; 
+    #edad: number = 15; 
     #aliadaFija: string = "Elienny";
     #medidorConfianza: number = 100; // BANDERA
     #contadorTraiciones: number = 0; // CONTADOR
@@ -60,12 +62,13 @@ export class FabiolaSanchez extends Prisionero {
     }
 
     public override juicio(condena: number): void {
+        // EJECUCIÓN DE LA FUNCIÓN ORIGINAL (Clase Padre)
         super.juicio(condena);
         
-        // Detectar traición según las reglas  (3 y 10 años)
+        // Detectar traición según las reglas (3 y 10 años)
         const oponenteTraiciono = (condena === 3 || condena === 10);
         
-        // Ejecución obligatoria de la memoria
+        // Ejecución de la lógica de memoria propia
         this.recordar(oponenteTraiciono);
     }
 }
