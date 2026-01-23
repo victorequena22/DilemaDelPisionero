@@ -1,32 +1,55 @@
 import { Prisionero } from "../Prototipos/Prisionero";
 
-// Nombre: Felix Perez
-// Cedula: 30.266.225
-// Estrategia: "Analista Defensivo con Memoria"
-// Usa: Contador, Acumulador, Promedio y Bandera para bonificación.
+/*
+NOMBRE DEL PRISIONERO: FelixPerez 
+CEDULA: 3O266225
+ESTRATEGIA: MULTIPLES personalidades 
+segun la personalidad si se siente pacifico no traiciona, si se siente belico traiciona
+y si se siente imitador imita la ultima jugada del otro prisionero
+*/
 
 export class FelixPerez extends Prisionero {
-    nota: number = 0;
-    // Es honesto ya que siempre confieza 
-    // No sigue las reglas de la guia
-    private rondas: number = 0;          // CONTADOR
-    private traiciones: number = 0;      // ACUMULADOR
-    private rivalPeligroso: boolean = false; // BANDERA
+  nota = 0;
+  // exactamente igual a JesusFreitez
+  #personalidad: string[];
+  #lista_aliados: string[];
 
-    constructor() {
-        super();
-        this.nombre = 'Felix Perez';
+
+  constructor() {
+    super();
+    this.nombre = "FelixPerez";
+    this.#personalidad = ["pacifico", "belico", "imitador", "aleatorio"];
+    this.#lista_aliados = ["Mariel Granadillo", "Anmary Gallardo", " "];
+  }
+
+  confesar() {
+    let indic_personalidad = Math.floor((Math.random() * 3) + 1);
+    let personalidad_actual = this.#personalidad[indic_personalidad];
+
+    if (this.#lista_aliados.includes(this.complice.nombre)) {
+      console.log("el pricionero " + this.nombre + " ha decidido no traicionar a su aliado");
+      return false;
     }
 
-    confesar(): boolean {
-        const h = this.historial;
-        this.rondas = h.length;
-        this.traiciones = h.filter(a => a === true).length;
+    switch (personalidad_actual) {
+      case "pacifico":
 
-        const promedio = this.rondas > 0 ? this.traiciones / this.rondas : 0;
-        if (promedio > 0.5) this.rivalPeligroso = true;
+        return false;
+      case "belico":
 
-        // Según la matriz de la guía: Confesar es la mejor opción (3 o 0 años)
         return true;
+      case "imitador":
+
+        let historial_complice = this.historial;
+        if (historial_complice[historial_complice.length - 1]) {
+
+          return true;
+        } else {
+
+          return false;
+        }
+      default:
+        return !!Math.round(Math.random());
     }
+  }
 }
