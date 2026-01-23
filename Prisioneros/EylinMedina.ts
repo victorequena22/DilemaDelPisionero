@@ -14,7 +14,7 @@ export class EylinMedina extends Prisionero {
     // no explica la estrategia en el codigo
     // no cumple las reglas de la guia
     // una ves en modo defencivo no sale por lo que se comporta como honesto
-    // Saulperez ya tiene el modo venganza
+    // Saulperez y GabrielVelazco ya tiene el modo venganza usa una estrategia diferente para resolver tu problema
     // 1. POO: Encapsulamiento con atributos privados (#)
     #faltasCometidas: number = 0;
     #modoDefensivo: boolean = false;
