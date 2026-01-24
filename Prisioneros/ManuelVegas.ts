@@ -6,7 +6,7 @@ import { Interrogador } from "../Prototipos/Interrogador";
 // Coopera en las primeras rondas
 
 export class ManuelVegas extends Prisionero {
-    nota = 0;
+    nota = 5;
     // ValeriaHernandez ya esta usando esta estrategia
     constructor() {
         super();

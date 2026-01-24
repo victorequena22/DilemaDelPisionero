@@ -1,7 +1,7 @@
 import { Prisionero } from "../Prototipos/Prisionero";
 
 export class CristianColina extends Prisionero {
-    nota = 0;
+    nota = 4;
     // Es igual a confiable 
     // no sigue las reglas de la guia
     #sumaAniosRecibidos: number = 0; // ACUMULADOR

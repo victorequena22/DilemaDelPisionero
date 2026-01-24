@@ -4,7 +4,7 @@ import { Prisionero } from "../Prototipos/Prisionero";
 //puedes confiar en el hasta que lo traicionas, pero si no lo haces te cubrira las espaldas
 
 export class JesúsRomero extends Prisionero {
-    nota = 0;
+    nota = 5;
     // Es igual al vengador 
     constructor () {
         super ();

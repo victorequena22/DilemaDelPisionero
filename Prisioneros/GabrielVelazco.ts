@@ -10,7 +10,7 @@ import { Prisionero } from "../Prototipos/Prisionero";
 // - Si el rival me traiciona 4 veces, activo una bandera y confieso siempre.
 
 export class GabrielVelazco extends Prisionero {
-  nota = 0;
+  nota = 3;
   // No sigue las reglas de las guias 
   // Tienes una variable global validando la accion local lo que lo convierte en honesto durante la primera ronda
   // Saulperez y EylinMedina usa una estrategia distinta a la de ellos para resolver tu problema

@@ -5,7 +5,7 @@ import { Prisionero } from "../Prototipos/Prisionero";
 // (decidiendo al azar entre cooperar o traicionar) hasta que el cómplice 
 // coopere 4 veces, momento en el cual lo considera aliado y vuelve a cooperar siempre con él.
 
-export class Mauriciopeña extends Prisionero {
+export class MauricioPeña extends Prisionero {
     nota = 10;
     // No se permiten porcentajes directos
     #estress: number = 0;

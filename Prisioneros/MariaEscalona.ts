@@ -6,6 +6,7 @@ import { Prisionero } from "../Prototipos/Prisionero";
 // confiesa si el cómplice es mayormente desleal o si es inestable y acaba
 // de traicionar.
 export class MariaEscalona extends Prisionero {
+    nota = 20;
     // Bandera: aliados con los que siempre coopera (hasta que analice su deslealtad)
     #aliados = ["Jose Barrios", "jesus rojas"];
     // Bandera: rivales con los que siempre confiesa
