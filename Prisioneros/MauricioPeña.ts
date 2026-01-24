@@ -4,8 +4,10 @@ import { Prisionero } from "../Prototipos/Prisionero";
 // Después de 3 cooperaciones del cómplice, adopta un comportamiento errático 
 // (decidiendo al azar entre cooperar o traicionar) hasta que el cómplice 
 // coopere 4 veces, momento en el cual lo considera aliado y vuelve a cooperar siempre con él.
+
 export class Mauriciopeña extends Prisionero {
-    nota = 0;
+    nota = 10;
+    // No se permiten porcentajes directos
     #estress: number = 0;
     #redencion: number = 0;
     #aliados: string[] = ["Cristian José"]
@@ -14,21 +16,12 @@ export class Mauriciopeña extends Prisionero {
         this.nombre = "Mauricio peña";
     }
     comportamientoHerratico(): boolean {
-        const random = Math.random();
-       
-        if (random < 0.5) {
-            return true;
-        }
-        return false;
-
-
-
-
+       return Math.random() < 0.5;
     }
     confesar(): boolean {
         const h = this.historial;
         
-
+        
         if (this.#aliados.includes(this.complice.nombre)) {
             this.#estress = 0;
             return false;
