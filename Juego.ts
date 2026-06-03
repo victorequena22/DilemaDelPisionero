@@ -11,9 +11,9 @@ import { Vengador } from "./Prisioneros/Profesor/Vengador";
 import { Redentor } from "./Prisioneros/Profesor/Redentor";
 import { Indeciso } from "./Prisioneros/Profesor/Indeciso";
 import chalk from "chalk";
-import { AlbanyJimenez } from "./Prisioneros/AlbanyJimenez";
-import { JoseGonzalez } from "./Prisioneros/JoseGonzalez";
-import { DiegoBustamante } from "./Prisioneros/DiegoBustamante";
+import { CedricPerez } from "./Prisioneros/CedricPerez";
+import { FelixPerez } from "./Prisioneros/feixperez";
+
 class Juego {
     #casos: Prisionero[] = [
         new Honesto(),
@@ -21,10 +21,9 @@ class Juego {
         new Vengador(),
         new Redentor(),
         new Indeciso(),
-        //prueba
-        new AlbanyJimenez(),
-        new JoseGonzalez(),
-        new DiegoBustamante(),
+        //
+        new CedricPerez(),   
+        new FelixPerez()     
     ];
     #interrogadores: Interrogador[] = [
         new InterrogadorSimple()
