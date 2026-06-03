@@ -1,5 +1,5 @@
-import { Prisionero } from "../Prototipos/Prisionero";
-import { InterrogadorInterface, PrisioneroInterface } from "../Prototipos/interface";
+import { Prisionero } from '../Prototipos/Prisionero';
+import { InterrogadorInterface, PrisioneroInterface } from '../Prototipos/interface';
 
 // Prisionero Estratega Adaptativo con Memoria Histórica
 // Coopera en la primera ronda para establecer confianza.
@@ -9,10 +9,19 @@ import { InterrogadorInterface, PrisioneroInterface } from "../Prototipos/interf
 // El objetivo es maximizar el beneficio mutuo con rivales honestos y minimizar la condena adaptándose firmemente a rivales hostiles.
 
 // CI: 3143546
+/**
+    La no se pueden mesclar mas de 2 estrategias
+    El codigo rompe el juego
+    Estrategia: 0puntos
+    Codigo:     0puntos
+    Bonos:      2puntos
+    Reglas:    -7puntos
+ */
 export class KelvinPacheco extends Prisionero {
+    nota = 0;
     constructor() {
         super();
-        this.setNombre("Kelvin Pacheco");
+        this.setNombre('Kelvin Pacheco');
     }
 
     confesar(_i: InterrogadorInterface | PrisioneroInterface): boolean {
@@ -20,25 +29,26 @@ export class KelvinPacheco extends Prisionero {
         if (!complice) return false;
 
         const historial = this.getHistorial(complice.getNombre());
+        /* Reglas de la clase para variables -1 */
         const totalRondas = historial.length;
 
         // 1. Condición inicial: Coopera la primera vez
-        if (totalRondas === 0) return false; 
+        if (totalRondas === 0) return false;
 
         // 2. Venganza inmediata: Si traicionó en la ronda anterior, se le devuelve la traición
         const ultimaJugada = historial[totalRondas - 1];
-        if (ultimaJugada) return true; 
+        if (ultimaJugada) return true;
 
         // 3. Análisis histórico (Solo se ejecuta si la última jugada fue Cooperar [false])
         // Contamos las traiciones (valores true)
-        const traiciones = historial.filter(x => x).length;
+        const traiciones = historial.filter((x) => x).length;
         const cooperaciones = totalRondas - traiciones; // Nos ahorramos un .filter()
 
         // Si hay más traiciones históricas, traiciona
         if (traiciones > cooperaciones) return true;
-        
+        /** esto no se ejecuta nunca */
         // Si hay más cooperaciones o hay empate, coopera.
         // (Como explicamos antes, si hay empate, la última jugada fue 'false', así que devuelve false)
-        return false; 
+        return false;
     }
 }

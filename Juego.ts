@@ -1,18 +1,20 @@
 // import { InterrogadorCallado } from "./Interrogadores/InterrogadorCallado";
-import { InterrogadorSimple } from "./Interrogadores/InterrogadorSimple";
-import { JuezSimple } from "./Jueces/JuezSimple";
-import { Prisionero } from "./Prototipos/Prisionero";
-import { Interrogador } from "./Prototipos/Interrogador";
-import { Juez } from "./Prototipos/Juez";
+import { InterrogadorSimple } from './Interrogadores/InterrogadorSimple';
+import { JuezSimple } from './Jueces/JuezSimple';
+import { Prisionero } from './Prototipos/Prisionero';
+import { Interrogador } from './Prototipos/Interrogador';
+import { Juez } from './Prototipos/Juez';
 
-import { Honesto } from "./Prisioneros/Profesor/Honesto";
-import { Confiable } from "./Prisioneros/Profesor/Confiable";
-import { Vengador } from "./Prisioneros/Profesor/Vengador";
-import { Redentor } from "./Prisioneros/Profesor/Redentor";
-import { Indeciso } from "./Prisioneros/Profesor/Indeciso";
-import chalk from "chalk";
-import { CedricPerez } from "./Prisioneros/CedricPerez";
-import { FelixPerez } from "./Prisioneros/feixperez";
+import { Honesto } from './Prisioneros/Profesor/Honesto';
+import { Confiable } from './Prisioneros/Profesor/Confiable';
+import { Vengador } from './Prisioneros/Profesor/Vengador';
+import { Redentor } from './Prisioneros/Profesor/Redentor';
+import { Indeciso } from './Prisioneros/Profesor/Indeciso';
+import chalk from 'chalk';
+import { CedricPerez } from './Prisioneros/CedricPerez';
+import { FelixPerez } from './Prisioneros/feixperez';
+import { HiramVasquez } from './Prisioneros/HiramVasquez';
+import { GabrielMartinez } from './Prisioneros/GabrielMartinez';
 
 class Juego {
     #casos: Prisionero[] = [
@@ -22,17 +24,15 @@ class Juego {
         new Redentor(),
         new Indeciso(),
         //
-        new CedricPerez(),   
-        new FelixPerez()     
+        new CedricPerez(),
+        new FelixPerez(),
+        new HiramVasquez(),
+        new GabrielMartinez(),
     ];
-    #interrogadores: Interrogador[] = [
-        new InterrogadorSimple()
-    ];
-    #jueces: Juez[] = [
-        new JuezSimple()
-    ];
+    #interrogadores: Interrogador[] = [new InterrogadorSimple()];
+    #jueces: Juez[] = [new JuezSimple()];
     ronda() {
-        const pendientes = this.#casos.map(p => p);
+        const pendientes = this.#casos.map((p) => p);
         while (pendientes.length > 0) {
             var prisionero1 = pendientes.pop();
             var prisionero2 = pendientes.pop();
@@ -57,16 +57,16 @@ class Juego {
             this.randonizar();
             this.ronda();
         }
-        console.log(`${chalk.bgYellow('No')}|${chalk.bgGreen(this.tap(" Pts", 6))}|${chalk.bgRed(this.tap(" Nombre y Apellido", 20))}|${chalk.bgBlue("Nota")}`);
-        this.#casos
-            .sort((p1, p2) => p1.sentencia - p2.sentencia)
-            .forEach(this.mostrar)
+        console.log(
+            `${chalk.bgYellow('No')}|${chalk.bgGreen(this.tap(' Pts', 6))}|${chalk.bgRed(this.tap(' Nombre y Apellido', 20))}|${chalk.bgBlue('Nota')}`
+        );
+        this.#casos.sort((p1, p2) => p1.sentencia - p2.sentencia).forEach(this.mostrar);
     }
     mostrar = (p: Prisionero, i: number) => {
         const s = chalk[i < 1 ? 'green' : i > 4 ? 'red' : 'white'](`${this.tap(p.sentencia, 6)}`);
         const n = chalk[i < 1 ? 'green' : i > 3 ? 'red' : 'white'](`${this.tap(p.nombre, 20)}`);
         console.log(`${chalk.yellow(this.tap(i + 1, 2))}|${s}|${n}|${p.nota}`);
-    }
+    };
     randonizar() {
         const pendientes = this.#casos;
         var j: number, x: Prisionero, i: number;
@@ -83,7 +83,7 @@ class Juego {
             n += ' ';
         }
         return n;
-    }
+    };
 }
 
-(new Juego()).juego();
+new Juego().juego();
