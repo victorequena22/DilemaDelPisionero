@@ -22,7 +22,6 @@ export class GabrielRivero extends Prisionero {
         this.nombre = 'Gabriel Rivero';
         this.cantidad_traiciones_rival = 0;
         this.esta_bloqueado_por_venganza = false;
-        /** No tengo complices con ese nombre */
         this.lista_aliados = ['Jhonny Garcia'];
     }
 
