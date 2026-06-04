@@ -8,7 +8,7 @@ import { Prisionero } from '../Prototipos/Prisionero';
     Estrategia: 10puntos
     Codigo:     10puntos
     Bonos:      3puntos
-    Reglas:     -3puntos
+    Reglas:    -3puntos
  */
 /** felixperez.ts - El nombre del archivo entregado no concuerda con el nombre del prisionero -1 */
 export class FelixPerez extends Prisionero {

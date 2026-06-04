@@ -15,6 +15,7 @@ import { CedricPerez } from './Prisioneros/CedricPerez';
 import { FelixPerez } from './Prisioneros/feixperez';
 import { HiramVasquez } from './Prisioneros/HiramVasquez';
 import { GabrielMartinez } from './Prisioneros/GabrielMartinez';
+import { WladimirRivas } from './Prisioneros/WladimirRivas';
 
 class Juego {
     #casos: Prisionero[] = [
@@ -26,8 +27,9 @@ class Juego {
         //
         new CedricPerez(),
         new FelixPerez(),
-        new HiramVasquez(),
         new GabrielMartinez(),
+        new HiramVasquez(),
+        new WladimirRivas(),
     ];
     #interrogadores: Interrogador[] = [new InterrogadorSimple()];
     #jueces: Juez[] = [new JuezSimple()];
@@ -63,8 +65,10 @@ class Juego {
         this.#casos.sort((p1, p2) => p1.sentencia - p2.sentencia).forEach(this.mostrar);
     }
     mostrar = (p: Prisionero, i: number) => {
-        const s = chalk[i < 1 ? 'green' : i > 4 ? 'red' : 'white'](`${this.tap(p.sentencia, 6)}`);
-        const n = chalk[i < 1 ? 'green' : i > 3 ? 'red' : 'white'](`${this.tap(p.nombre, 20)}`);
+        const end = this.#casos.length - 2;
+
+        const s = chalk[i < 1 ? 'green' : i > end ? 'red' : 'white'](`${this.tap(p.sentencia, 6)}`);
+        const n = chalk[i < 1 ? 'green' : i > end ? 'red' : 'white'](`${this.tap(p.nombre, 20)}`);
         console.log(`${chalk.yellow(this.tap(i + 1, 2))}|${s}|${n}|${p.nota}`);
     };
     randonizar() {
