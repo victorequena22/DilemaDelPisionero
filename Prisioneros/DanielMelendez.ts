@@ -1,62 +1,49 @@
 import { Prisionero } from '../Prototipos/Prisionero';
 
-// Nombre: Daniel Melendez
-// Cedula: 31.234.021
-// Este prisionero es Calculador Avaricioso:
-// Si es aliado, no traiciona (coopera).
-// Si la codicia es mayor de 80, traiciona (quiere ganar ventaja).
-// Si la sospecha es mayor de 50, traiciona (se defiende por si acaso).
-// Si el rival cooperó 2 veces seguidas, la sospecha baja y coopera.
-// Si fue traicionado en la última ronda, traiciona.
+// Daniel Melendez CI 31234021
+// Coopera en la primera ronda.
+// Luego: si el resultado anterior fue SIMÉTRICO (ambos cooperaron o ambos traicionaron),
+// repite tu jugada anterior. Si fue ASIMÉTRICO, cambia tu jugada.
 /**
-    La estrategia descrita no coresponde con el codigo.
-    El codigo rompe el juego
-    Se implemento un prohibicion de porcentajes directos
-    Estrategia: 0puntos
-    Codigo:     0puntos
+    Estrategia: 10puntos
+    Codigo:     10puntos
     Bonos:      2puntos
-    Reglas:    -7puntos
+    Reglas:    -4puntos
  */
 export class DanielMelendez extends Prisionero {
-    nota = -5;
+    nota = 18;
     /* Reglas de la clase para variables -2 */
-    private totalRondas: number;
-    /* Reglas de la clase para variables -4 */
-    private totalTraicionesRival: number;
-    /* Reglas de la clase para variables -6 */
-    private promedioTraicionRival: number;
+    private misDecisiones: boolean[] = [];
 
     constructor() {
         super();
         this.nombre = 'Daniel Melendez';
-
-        this.totalRondas = 0;
-        this.totalTraicionesRival = 0;
-        this.promedioTraicionRival = 0;
     }
 
     confesar(): boolean {
-        /** Rompe el juego */
-        const historial = this.historialRival;
+        const historial = this.historial;
+        const n = historial.length;
 
-        // Primera ronda: no hay datos, así que iniciamos cooperando (false)
-        if (!historial || historial.length === 0) {
-            return false;
+        if (n === 0) {
+            const decision = false;
+            this.misDecisiones.push(decision);
+            return decision;
         }
 
-        this.totalRondas = historial.length;
-        /* Reglas de la clase para variables -7 */
-        const ultimaJugadaRival = historial[historial.length - 1];
-        if (ultimaJugadaRival === true) {
-            this.totalTraicionesRival++;
+        /* Reglas de la clase para variables -3 */
+        const yoTraicione = this.misDecisiones[n - 1];
+        /* Reglas de la clase para variables -4 */
+        const rivalTraiciono = historial[n - 1];
+
+        var decision: boolean;
+
+        if (yoTraicione === rivalTraiciono) {
+            decision = yoTraicione;
+        } else {
+            decision = !yoTraicione;
         }
 
-        this.promedioTraicionRival = this.totalTraicionesRival / this.totalRondas;
-        /** No se permiten porcentajes directos */
-        if (this.promedioTraicionRival > 0.4) {
-            return true;
-        }
-
-        return false;
+        this.misDecisiones.push(decision);
+        return decision;
     }
 }

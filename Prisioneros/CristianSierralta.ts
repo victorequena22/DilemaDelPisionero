@@ -1,62 +1,73 @@
-import { Prisionero } from "../Prototipos/Prisionero";
-// Nombre: Cristian sierralta
-// Cedula: 32014233
-// Estrategia: Coopera con amigos, castiga enemigos y detecta traición crónica.
+import { Prisionero } from '../Prototipos/Prisionero';
+
 /**
-    Estrategia: 4puntos Que significa detecta traición crónica
-    Código:     8puntos el código es correcto pero no refleja la estrategia descrita
-    Bonos:      2puntos
-    Reglas:    -6puntos
+ * @author Cristian Sierralta
+ * @Cedula 32014233
+ * @Estrategia:
+ * - Coopera incondicionalmente con amigos.
+ * - Traiciona incondicionalmente a enemigos.
+ * - Para el resto, castiga la traición crónica (≥7 de 10 últimas rondas).
+ * - Por defecto, coopera.
  */
-/** cristianSierralta.ts - El nombre del archivo entregado no concuerda con el nombre del prisionero -1 */
-/** El nombre de la clase no cumple el CamelCase -2 */
-export class cristianSierralta extends Prisionero {
-    nota = 8;
-    // Bandera: lista de amigos (con ellos siempre coopera)
-     /* Reglas de la clase para variables -3 */
-     /* No tengo complices con esos nombres */
-    #listaAmigos = ["Mauricio peña", "Diego Oropeza ", ];
-    // Bandera: lista de enemigos (con ellos siempre traiciona)
-     /* Reglas de la clase para variables -4 */
-    #listaEnemigos = ["Fabricio Morales", "Daniel Melendes"];
-     /* Reglas de la clase para variables -5 */
-    #contadorTraiciones = 0;
-     /* Reglas de la clase para variables -6 */
-    #acumuladorTraiciones = 0;
+/**
+    Estrategia: 10puntos 
+    Código:     0puntos Arregla el codigo para que no rompa el juego
+    Bonos:      2puntos
+    Reglas:    -13puntos
+ */
+export class CristianSierralta extends Prisionero {
+    nota = -1;
+    /* Reglas de la clase para variables -3 */
+    private readonly amigos: string[] = ['Mauricio Peña', 'Diego Oropesa'];
+    /* Reglas de la clase para variables -6 */
+    private readonly enemigos: string[] = ['Fabricio Morales', 'Daniel Melendez'];
+    /* Reglas de la clase para variables -8 */
+    private contadorTraiciones: number = 0;
+    /* Reglas de la clase para variables -10 */
+    private acumuladorTraiciones: number = 0;
+    /* Esto no cumple con el POO y rompe el juego */
+    public nombre: string = 'Cristian Sierralta';
+
     constructor() {
         super();
-        this.nombre = "Cristian Sierralta";
+        // Aseguramos que el historial existe (práctica defensiva)
+        this.historial = this.historial || [];
     }
+
     confesar(): boolean {
-        const n = this.complice.nombre;
-        const h = this.historial;
-        if (this.#listaAmigos.includes(n)) {
+        /* Reglas de la clase para variables -11 */
+        const nombreOponente = this.complice?.nombre || '';
+        /* Reglas de la clase para variables -12 */
+        const historialOponente = this.historial;
+
+        // 1. Regla de Amigos: Siempre Cooperar (false = no confesar = cooperar)
+        if (this.amigos.includes(nombreOponente)) {
             return false;
         }
-        if (this.#listaEnemigos.includes(n)) {
+
+        // 2. Regla de Enemigos: Siempre Traicionar (true = confesar = traicionar)
+        if (this.enemigos.includes(nombreOponente)) {
+            /** No hacen nada por la estrategia */
+            this.contadorTraiciones++;
+            this.acumuladorTraiciones++;
             return true;
         }
-        /** Esto no hace nada */
-        if (h.at(-1)) {
-            this.#contadorTraiciones++;
-            this.#acumuladorTraiciones += 1;
+
+        // 3. Regla de Traición Crónica: Si en las últimas 10 rondas el oponente
+        //    ha traicionado (confesado) 7 o más veces, yo le traiciono.
+        if (historialOponente.length >= 10) {
+            const ultimas10 = historialOponente.slice(-10);
+            /* Reglas de la clase para variables -13 */
+            const traicionesRecibidas = ultimas10.filter((accion) => accion === true).length;
+            if (traicionesRecibidas >= 7) {
+                /** No hacen nada por la estrategia */
+                this.contadorTraiciones++;
+                this.acumuladorTraiciones++;
+                return true; // Castigo la traición crónica
+            }
         }
-        if (h.length < 10) {
-            return false;
-        }
-        const t = h.slice(-10).filter(j => j).length;
-        return !!Math.round(t / 10) && t >= 7;
-    }
-    get listaAmigos() {
-        return this.#listaAmigos;
-    }
-    get listaEnemigos() {
-        return this.#listaEnemigos;
-    }
-    get contadorTraiciones() {
-        return this.#contadorTraiciones;
-    }
-    get acumuladorTraiciones() {
-        return this.#acumuladorTraiciones;
+
+        // 4. Comportamiento por Defecto: Cooperar
+        return false;
     }
 }
