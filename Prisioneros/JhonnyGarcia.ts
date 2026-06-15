@@ -1,53 +1,47 @@
 import { Prisionero } from '../Prototipos/Prisionero';
+import { Interrogador } from '../Prototipos/Interrogador';
 
-// Nombre: Jhonny Garcia
-// Cedula: 31.877.527
-// Estrategia: Empieza cooperando (negando).
-// Mantiene una lista de aliados donde solo está Gabriel Rivero para cooperar con él.
-// Contra los demás, usa un contador para registrar traiciones ajenas y una bandera de bloqueo si el oponente confiesa.
-/**
-    Esa estrategia es valida pero no esta implementada correctamente en el codigo
-    la estrategia tampoco esta bien decrita
-    El codigo hace que nunca confiese a nadie
-    Eso lo combierte en confiable
-    bonos:      3puntos
-    Reglas:    -3puntos
+//Jhonny García Ing Telematica
+//CI 31877527
+
+//El prisionero funciona de la siguiente manera:
+//Con la estructura bandera coopera siempre con el prisionero llamado Gabriel Rivero
+//En la primera ronda siempre coopera
+//En la segunda ronda siempre coopera
+//Analiza las últimas 2 traiciones consecutivas del cómplice
+//Solo traiciona si el cómplice traicionó 2 veces seguidas
+//En cualquier otro caso, coopera
+/** 
+    Estrategia: 10puntos
+    codigo:     10puntos
+    reglas:    -2puntos
  */
 export class JhonnyGarcia extends Prisionero {
-    /* Reglas de la clase para variables -1 */
-    cantidad_traiciones_rival: number;
-    /* Reglas de la clase para variables -2 */
-    esta_bloqueado_por_venganza: boolean;
-    /* Reglas de la clase para variables -3 */
-    lista_aliados: string[];
-
+    nota = 18;
     constructor() {
         super();
-        this.nombre = 'Jhonny Garcia';
-        this.cantidad_traiciones_rival = 0;
-        this.esta_bloqueado_por_venganza = false;
-        this.lista_aliados = ['Gabriel Rivero'];
+        this.nombre = 'Jhonny García';
     }
+    override confesar(_: Interrogador): boolean {
+        const historial = this.historial;
 
-    confesar() {
-        var decision_final;
-        var nombre_rival;
-
-        nombre_rival = this.complice.nombre;
-
-        if (this.lista_aliados.includes(nombre_rival)) {
-            decision_final = false;
-        } else {
-            /** Donde se activa el Bloqueo? */
-            /** Como nunca se activa nunca se ejecuta  */
-            if (this.esta_bloqueado_por_venganza) {
-                decision_final = true;
-                this.esta_bloqueado_por_venganza = false;
-            } else {
-                decision_final = false;
-            }
+        if (this.complice.nombre === 'Gabriel Rivero') {
+            return false;
         }
 
-        return decision_final;
+        if (historial.length < 2) {
+            return false;
+        }
+
+        /* Reglas de la clase para variables -1 */
+        const ultimasDos = historial.slice(-2);
+        /* Reglas de la clase para variables -2 */
+        const dostraiciones = ultimasDos.every((r) => r === true);
+
+        if (dostraiciones) {
+            return true;
+        }
+
+        return false;
     }
 }
