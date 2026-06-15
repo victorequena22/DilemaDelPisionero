@@ -1,40 +1,36 @@
 import { Prisionero } from '../Prototipos/Prisionero';
 
 // Nombre: Kelvin Pacheco
-
 // Cedula: 31843546
-
-// Estrategia: El prisionero Inicia cooperando. Y cuenta las traiciones recibidas.
-
-// Si las traiciones superan el 40% del total de rondas, activa una bandera de alerta y confiesa.
-
-// Cuenta con una condición de desbloqueo si el rival coopera dos veces seguidas.
+// Estrategia: El prisionero inicia cooperando. Pero evalua y cuenta constantemente qué tan seguido lo traicionan, comparando las traiciones con el total de rondas usando una escala fija de 10 a 4.
+//Si las traiciones superan esa comparación, activa la Bandera de alerta y confiesa.
+// Pero si el complice coopera 2 veces seguidas, bajamos la bandera de peligro.
 /**
     La estrategia esta bien pero en las reglas del juego se especifica que
     No se pueden usar porcentajes directos cambia esa parte por otra forma de calcularlo
     y tendra 20puntos
-    Estrategia: 0puntos
-    Codigo:     0puntos
+    Estrategia: 10puntos
+    Codigo:     10puntos
     Bonos:      2puntos
-    Reglas:    -10puntos
+    Reglas:    -4puntos
  */
 export class KelvinPacheco extends Prisionero {
-    nota = -8;
+    nota = 18;
     // [ACUMULADOR]: Registra el total de traiciones sufridas por cada cómplice
-    /* Reglas de la clase para variables -2 */
-    private traicionesPorComplice: Record<string, number> = {};
+    /* Reglas de la clase para variables -1 */
+    private traiciones_por_complice: Record<string, number> = {};
 
     // [CONTADOR]: Registra la cantidad total de rondas jugadas contra cada cómplice
-    /* Reglas de la clase para variables -4 */
-    private rondasPorComplice: Record<string, number> = {};
+    /* Reglas de la clase para variables -2 */
+    private rondas_por_complice: Record<string, number> = {};
 
     // [CONTADOR]: Cuenta las cooperaciones consecutivas del rival para la condición de desbloqueo
-    /* Reglas de la clase para variables -6 */
-    private cooperacionesSeguidas: Record<string, number> = {};
+    /* Reglas de la clase para variables -3 */
+    private cooperaciones_seguidas: Record<string, number> = {};
 
     // [BANDERA]: Estado de alerta individual para saber si debemos castigar al cómplice actual
-    /* Reglas de la clase para variables -8 */
-    private banderaPeligro: Record<string, boolean> = {};
+    /* Reglas de la clase para variables -4 */
+    private bandera_peligro: Record<string, boolean> = {};
 
     constructor() {
         super();
@@ -47,56 +43,55 @@ export class KelvinPacheco extends Prisionero {
 
         // Inicialización en la primera ronda con este cómplice específico
 
-        if (this.rondasPorComplice[rival] === undefined) {
-            this.rondasPorComplice[rival] = 0;
+        if (this.rondas_por_complice[rival] === undefined) {
+            this.rondas_por_complice[rival] = 0;
 
-            this.traicionesPorComplice[rival] = 0;
+            this.traiciones_por_complice[rival] = 0;
 
-            this.cooperacionesSeguidas[rival] = 0;
+            this.cooperaciones_seguidas[rival] = 0;
 
-            this.banderaPeligro[rival] = false;
+            this.bandera_peligro[rival] = false;
 
             return false; // Inicia cooperando (niega el crimen)
         }
-        /* Reglas de la clase para variables -9 */
-        const historialRival = this.historial;
 
-        if (historialRival.length > 0) {
-            /* Reglas de la clase para variables -10 */
+        const historial_rival = this.historial;
 
-            const ultimaJugadaRival = historialRival[historialRival.length - 1];
+        if (historial_rival.length > 0) {
+            const ultima_jugada_rival = historial_rival[historial_rival.length - 1];
 
             // Uso de Contadores y Acumuladores exigidos
 
-            this.rondasPorComplice[rival]++;
+            this.rondas_por_complice[rival]++;
 
-            if (ultimaJugadaRival === true) {
-                this.traicionesPorComplice[rival] += 1; // Acumulador de traiciones
+            if (ultima_jugada_rival === true) {
+                this.traiciones_por_complice[rival] += 1; // Acumulador de traiciones
 
-                this.cooperacionesSeguidas[rival] = 0; // Rompe racha de cooperaciones
+                this.cooperaciones_seguidas[rival] = 0; // Rompe racha de cooperaciones
             } else {
-                this.cooperacionesSeguidas[rival]++; // Contador de cooperaciones seguidas
+                this.cooperaciones_seguidas[rival]++; // Contador de cooperaciones seguidas
             }
 
-            // Evaluación para activar la BANDERA de peligro (Tasa superior al 40%)
+            // Evaluación Matemática de escala de 10 a 4 para activar la BANDERA de peligro.
 
-            const tasaTraicion = this.traicionesPorComplice[rival] / this.rondasPorComplice[rival];
-            /** No se permiten porcentages directos */
-            if (tasaTraicion > 0.4) {
-                this.banderaPeligro[rival] = true;
+            const traiciones_actuales = this.traiciones_por_complice[rival];
+            const rondas_actuales = this.rondas_por_complice[rival];
+
+            if (traiciones_actuales * 10 > rondas_actuales * 4) {
+                this.bandera_peligro[rival] = true;
             }
 
             // CONDICIÓN DE DESBLOQUEO: Si coopera 2 veces seguidas, bajamos la bandera de peligro
 
-            if (this.cooperacionesSeguidas[rival] >= 2 && this.banderaPeligro[rival] === true) {
-                this.banderaPeligro[rival] = false;
+            if (this.cooperaciones_seguidas[rival] >= 2 && this.bandera_peligro[rival] === true) {
+                this.bandera_peligro[rival] = false;
 
-                this.traicionesPorComplice[rival] = 0; // Reseteo parcial del acumulador
+                this.traiciones_por_complice[rival] = 0; // Reseteo parcial del acumulador
             }
         }
 
         // Si la bandera está en true confiesa (true), de lo contrario coopera (false)
 
-        return this.banderaPeligro[rival];
+        return this.bandera_peligro[rival];
     }
 }

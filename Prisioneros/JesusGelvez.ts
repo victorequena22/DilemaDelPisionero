@@ -1,77 +1,107 @@
 // ============================================================
 // DATOS DEL ALUMNO
 // Nombre: Jesus Gelvez
-// Cédula: [31.926.221]
-// Estrategia: "Renacer tras el Perdón"
+// Cédula: [ESCRIBE AQUÍ TU CÉDULA]
+// Estrategia: "El Par Impar de la Conciencia"
 // ============================================================
-// EXPLICACIÓN DETALLADA DE LA ESTRATEGIA:
-//
-// Inspirada en "Tit for Tat" (ojo por ojo) pero con dos innovaciones:
-//
-// 1. PERDÓN CONDICIONAL: Si el oponente ha traicionado (confesado)
-//    en más de 5 rondas en total, entonces esta estrategia coopera (niega)
-//    en la siguiente ronda como oferta de paz, reiniciando el ciclo.
-//
-// 2. BLOQUEO TEMPORAL CON DESBLOQUEO: Si el oponente traiciona 3 VECES
-//    SEGUIDAS, se activa un "modo castigo" que devuelve 3 traiciones
-//    consecutivas. Luego de cumplido el castigo, se desbloquea y vuelve
-//    a la normalidad. Esto cumple con la regla de "condición de desbloqueo".
+// EXPLICACIÓN DETALLADA:
+// 
+// Esta estrategia NO utiliza el número de ronda, NO depende del oponente,
+// NO es cíclica, NO usa porcentajes. Se basa únicamente en el propio historial
+// de decisiones del prisionero.
+// 
+// - Primera ronda: coopera (false).
+// - En cada ronda, cuenta cuántas veces ha traicionado (true) en TOTAL.
+//   * Si la cantidad de traiciones es PAR → coopera (false)
+//   * Si es IMPAR → traiciona (true)
+// - Bloqueo de enfriamiento: si en las últimas 3 rondas (excluyendo la actual)
+//   hubo exactamente 2 traiciones, se activa un "modo enfriamiento" que
+//   FUERZA la cooperación durante la siguiente ronda (solo una).
+//   Luego se desbloquea automáticamente.
+// 
 // ============================================================
 
-import { Prisionero } from '../Prototipos/Prisionero';
-/** Rompe el juego y no sigue la herencia */
+import { Prisionero } from "../Prototipos/Prisionero";
+/**
+    Estrategia: 10
+    Codigo      5 El modo enfriamiento esta mal implementado funciona la mayoria de las veces
+    bono:       2
+    Reglas:    -8
+ */
 export class JesusGelvez extends Prisionero {
-    #consecutiveTraiciones: number;
-    #modoBloqueo: boolean;
-    #castigosPendientes: number;
+    
+    /* Reglas de la clase para variables -1 */
+    #rondasJugadas: number = 0;
+    /* Reglas de la clase para variables -2 */
+    #totalTraiciones: number = 0;          
+    /* Reglas de la clase para variables -3 */
+    #ultimasDecisiones: boolean[] = [];     
+    /* Reglas de la clase para variables -4 */
+    #modoEnfriamiento: boolean = false;    
+    /* Reglas de la clase para variables -5 */
+    #rondasEnfriamientoRestantes: number = 0;
 
     constructor() {
         super();
-        this.#consecutiveTraiciones = 0;
-        this.#modoBloqueo = false;
-        this.#castigosPendientes = 0;
         this.nombre = 'Jesus Gelvez';
     }
 
-    confesar(roundNumber: number, myHistory: boolean[], opponentHistory: boolean[]): boolean {
-        if (roundNumber === 0) {
+    
+    confesar(): boolean {
+        const ronda = this.#rondasJugadas;
+        this.#rondasJugadas++;
+
+        
+        if (ronda === 0) {
+            this.#ultimasDecisiones.push(false);
             return false;
         }
 
-        if (this.#modoBloqueo) {
-            if (this.#castigosPendientes > 0) {
-                this.#castigosPendientes--;
-                if (this.#castigosPendientes === 0) {
-                    this.#modoBloqueo = false;
-                    this.#consecutiveTraiciones = 0;
+        
+        if (this.#modoEnfriamiento) {
+            if (this.#rondasEnfriamientoRestantes > 0) {
+                this.#rondasEnfriamientoRestantes--;
+                if (this.#rondasEnfriamientoRestantes === 0) {
+                    this.#modoEnfriamiento = false;
                 }
-                return true;
+                
+                this.#ultimasDecisiones.push(false);
+                return false;
             } else {
-                this.#modoBloqueo = false;
+                this.#modoEnfriamiento = false;
             }
         }
 
-        var lastOpponentMove = opponentHistory[opponentHistory.length - 1];
-        if (lastOpponentMove === true) {
-            this.#consecutiveTraiciones++;
+        
+        var decision: boolean;
+        if (this.#totalTraiciones % 2 === 0) {
+            decision = false;   
         } else {
-            this.#consecutiveTraiciones = 0;
+            decision = true;    
         }
 
-        if (this.#consecutiveTraiciones >= 3 && !this.#modoBloqueo) {
-            this.#modoBloqueo = true;
-            this.#castigosPendientes = 3;
-            this.#consecutiveTraiciones = 0;
-            return true;
+        
+        if (decision === true) {
+            this.#totalTraiciones++;
+        }
+        this.#ultimasDecisiones.push(decision);
+
+        
+    /* Reglas de la clase para variables -7 */
+        const historialHastaAntes = this.#ultimasDecisiones.slice(0, -1);
+    /* Reglas de la clase para variables -8 */
+        const ultimasTres = historialHastaAntes.slice(-3);
+        var traicionesUltimasTres = 0;
+        for (var i = 0; i < ultimasTres.length; i++) {
+            if (ultimasTres[i] === true) traicionesUltimasTres++;
         }
 
-        var totalTraicionesRival = opponentHistory.filter(function (move) {
-            return move === true;
-        }).length;
-        if (totalTraicionesRival >= 5) {
-            return false;
+        
+        if (traicionesUltimasTres === 2 && !this.#modoEnfriamiento) {
+            this.#modoEnfriamiento = true;
+            this.#rondasEnfriamientoRestantes = 1;   
         }
 
-        return lastOpponentMove;
+        return decision;
     }
 }
