@@ -1,10 +1,14 @@
-import { Prisionero } from '../Prototipos/Prisionero';
-// Nombre: Johnsons Vivas
+import { Prisionero } from "../Prototipos/Prisionero";
+import { Interrogador } from "../Prototipos/Interrogador";
+
+// Nombre: Johnsons Vivas 
 // Cedula: 27.759.369
-// Estrategia: El prisionero comienza Cooperando inicialmente, pero traiciona permanentemente al detectar una traicion.
-/** Este ya esta entre los del profesor */
+// Estrategia:  Si el complice supera las 20 líneas de código, siempre traicionamos.
+// Si son menores a 20 lineas, cooperamos hasta que el nos traicione.
+/** Rompe el juego */
+
 export class JohnsonsVivas extends Prisionero {
-    /* Reglas de la clase para variables -1 */
+
     private bandera: boolean = false;
 
     constructor() {
@@ -12,21 +16,23 @@ export class JohnsonsVivas extends Prisionero {
         this.nombre = 'Johnsons Vivas';
     }
 
-    confesar(): boolean {
-        const historial = this.historial;
-
-        // Si la bandera ya está activada, traiciona siempre
+    confesar(i: Interrogador): boolean { 
+        // Si el oponente tiene más de 20 líneas, activamos la bandera para traicionar.
+        if (i.contarLineas(i.nombre_del_complice) > 20) {
+            this.bandera = true;
+        }
+        // Activación de bandera.
         if (this.bandera) {
             return true;
         }
-
-        // Si el cómplice traicionó en la última ronda, activa la bandera y traiciona
-        if (historial.length > 0 && historial[historial.length - 1] === true) {
+        // Si el complice tiene menos de 20 lineas de código, cooperamos, pero si nos traiciona una vez, dejamos de cooperar.
+        if (this.historial.length > 0 && this.historial[this.historial.length - 1] === true) {
+            // activamos la bandera para traicionar.
             this.bandera = true;
             return true;
         }
 
-        // Por defecto, coopera
+
         return false;
     }
 }
